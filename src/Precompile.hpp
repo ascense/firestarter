@@ -25,8 +25,6 @@ namespace Firestarter {
 namespace Core { class Engine; }
 }
 
-#include <SDL/SDL.h>
-
 // Engine Includes
 #include "lib/Lib.hpp"
 

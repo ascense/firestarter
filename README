@@ -6,3 +6,6 @@ Required libraries for compiling:
  - libgl
  - libglew
  - libsdl
+ 
+ Additionally, UnitTest++ is needed for the testcases
+ 

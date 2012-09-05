@@ -22,11 +22,13 @@
 
 namespace Firestarter { namespace Lib {
 
+namespace Geom {
+
 /**
 *  Return true if point is counter-clockwise from
 *+ the line line1-->line2, where x points right and y points upwards.
 */
-bool Geom::Collide2D(Vec2D *point, Vec2D *line1, Vec2D *line2) {
+bool collide2D(Vec2D *point, Vec2D *line1, Vec2D *line2) {
     Vec2D lineVec = *line2 - *line1;
     Vec2D pointVec = *point - *line1;
 
@@ -38,5 +40,7 @@ bool Geom::Collide2D(Vec2D *point, Vec2D *line1, Vec2D *line2) {
 
     return false;
 }
+
+} // Geom
 
 }} // Firestarter::Lib

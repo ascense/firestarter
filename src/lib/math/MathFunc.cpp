@@ -22,8 +22,12 @@
 
 namespace Firestarter { namespace Lib {
 
-float Math::ToRadians(float degrees) {
+namespace Math {
+
+float toRadians(float degrees) {
     return (degrees * M_PI / 180.0f);
 }
+
+} // Math
 
 }} // Firestarter::Lib

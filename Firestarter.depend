@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1346857679 source:e:\work\code\codeblocks\firestarter\src\core\engine.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\core\engine.cpp
 	"Engine.hpp"
 
 1344280147 p"
 
-1346857686 e:\work\code\codeblocks\firestarter\src\core\engine.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\core\engine.hpp
 	"../Precompile.hpp"
 	"../managers/TaskMgr.hpp"
 	"../managers/StateMgr.hpp"
@@ -40,7 +40,7 @@
 
 1344277542 >
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\main.cpp
+1346868845 source:e:\work\code\codeblocks\firestarter\src\main.cpp
 	<iostream>
 	"Precompile.hpp"
 	"core/Engine.hpp"
@@ -67,38 +67,38 @@
 
 1339376779 gr.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\scene\object.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\scene\object.cpp
 	"Object.hpp"
 
-1344969715 e:\work\code\codeblocks\firestarter\src\scene\object.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\scene\object.hpp
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\scene\scene.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\scene\scene.cpp
 	"Scene.hpp"
 
 1344280411 "
 
-1344969715 e:\work\code\codeblocks\firestarter\src\scene\scene.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\scene\scene.hpp
 	"../Precompile.hpp"
 	"Object.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.cpp
 	"EnvironmentMgr.hpp"
 
-1344969715 e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.hpp
 	"../Precompile.hpp"
 
 1344351513 pile.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\managers\platformmgr.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\platformmgr.cpp
 	"PlatformMgr.hpp"
 
-1346533054 e:\work\code\codeblocks\firestarter\src\managers\platformmgr.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\managers\platformmgr.hpp
 	"../Precompile.hpp"
 
-1346856495 source:e:\work\code\codeblocks\firestarter\src\managers\servicemgr.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\servicemgr.cpp
 	"ServiceMgr.hpp"
 
-1346855979 e:\work\code\codeblocks\firestarter\src\managers\servicemgr.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\managers\servicemgr.hpp
 	<string>
 	<vector>
 	"../lib/Lib.hpp"
@@ -107,16 +107,16 @@
 
 1339613637 b.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\managers\statemgr.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\statemgr.cpp
 	"StateMgr.hpp"
 
-1344969715 e:\work\code\codeblocks\firestarter\src\managers\statemgr.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\managers\statemgr.hpp
 	"../Precompile.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\managers\taskmgr.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\taskmgr.cpp
 	"TaskMgr.hpp"
 
-1344969715 e:\work\code\codeblocks\firestarter\src\managers\taskmgr.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\managers\taskmgr.hpp
 	"../Precompile.hpp"
 
 1344969715 source:e:\work\code\codeblocks\firestarter\src\managers\ienvironmentmgr.cpp
@@ -143,7 +143,7 @@
 
 1339515307 starterException.hpp"
 
-1346860603 e:\work\code\codeblocks\firestarter\src\lib\lib.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\lib\lib.hpp
 	"core/Exception.hpp"
 	"geom/GeomFunc.hpp"
 	"geom/Vec2D.hpp"
@@ -179,28 +179,27 @@
 1344280147 e:\work\code\codeblocks\firestarter\src\lib\vec2d.hpp
 	"Vector.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\test\librarytest.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\test\librarytest.cpp
 	<unittest++/UnitTest++.h>
 
 1344282613 +/UnitTest++.h>
 
-1345038948 source:e:\work\code\codeblocks\firestarter\src\test\vec2dtest.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\test\vec2dtest.cpp
 	<unittest++/UnitTest++.h>
 	"../lib/Lib.hpp"
 
 1344284086 c2D.hpp"
 
-1346864515 e:\work\code\codeblocks\firestarter\src\precompile.hpp
-	<SDL/SDL.h>
+1346869594 e:\work\code\codeblocks\firestarter\src\precompile.hpp
 	"lib/Lib.hpp"
 
-1344969715 e:\work\code\codeblocks\firestarter\src\lib\core\exception.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\core\exception.hpp
 	<exception>
 
-1345664150 e:\work\code\codeblocks\firestarter\src\lib\geom\vec2d.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\vec2d.hpp
 	"Vector.hpp"
 
-1345662586 e:\work\code\codeblocks\firestarter\src\lib\geom\vector.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\vector.hpp
 	"../core/Exception.hpp"
 
 1344601502 xception.hpp"
@@ -412,76 +411,76 @@
 	<unittest++/UnitTest++.h>
 	"../lib/geom/Vec2D.hpp"
 
-1345664148 source:e:\work\code\codeblocks\firestarter\src\lib\geom\vec2d.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\geom\vec2d.cpp
 	"Vec2D.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\lib\geom\vec3d.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\geom\vec3d.cpp
 	"Vec3D.hpp"
 
-1344969715 e:\work\code\codeblocks\firestarter\src\lib\geom\vec3d.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\vec3d.hpp
 	"Vector.hpp"
 
-1345664212 source:e:\work\code\codeblocks\firestarter\src\lib\geom\vector.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\geom\vector.cpp
 	"Vector.hpp"
 
-1344969715 source:e:\work\code\codeblocks\firestarter\src\lib\core\exception.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\core\exception.cpp
 	"Exception.hpp"
 
-1345036250 source:e:\work\code\codeblocks\firestarter\src\lib\geom\aabb.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\geom\aabb.cpp
 	"AABB.hpp"
 
-1345036234 e:\work\code\codeblocks\firestarter\src\lib\geom\aabb.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\aabb.hpp
 	"../core/Exception.hpp"
 	"Vector.hpp"
 
-1345036224 source:e:\work\code\codeblocks\firestarter\src\lib\geom\aabb2d.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\geom\aabb2d.cpp
 	"AABB2D.hpp"
 
-1345035127 e:\work\code\codeblocks\firestarter\src\lib\geom\aabb2d.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\aabb2d.hpp
 	"../core/Exception.hpp"
 	"AABB.hpp"
 	"Vec2D.hpp"
 
-1345035262 source:e:\work\code\codeblocks\firestarter\src\lib\geom\aabb3d.cpp
+1346868977 source:e:\work\code\codeblocks\firestarter\src\lib\geom\aabb3d.cpp
 	"AABB3D.hpp"
 
-1345035301 e:\work\code\codeblocks\firestarter\src\lib\geom\aabb3d.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\aabb3d.hpp
 	"../core/Exception.hpp"
 	"AABB.hpp"
 	"Vec3D.hpp"
 
-1345038981 source:e:\work\code\codeblocks\firestarter\src\test\vec3dtest.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\test\vec3dtest.cpp
 	<unittest++/UnitTest++.h>
 	"../lib/Lib.hpp"
 
-1345036856 source:e:\work\code\codeblocks\firestarter\src\test\aabb2dtest.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\test\aabb2dtest.cpp
 	<unittest++/UnitTest++.h>
 	"../lib/Lib.hpp"
 
-1345663420 source:e:\work\code\codeblocks\firestarter\src\lib\geom\geomfunc.cpp
+1346869712 source:e:\work\code\codeblocks\firestarter\src\lib\geom\geomfunc.cpp
 	"GeomFunc.hpp"
 
-1346532717 e:\work\code\codeblocks\firestarter\src\lib\geom\geomfunc.hpp
+1346868984 e:\work\code\codeblocks\firestarter\src\lib\geom\geomfunc.hpp
 	"Vec2D.hpp"
 
-1345665282 source:e:\work\code\codeblocks\firestarter\src\test\geomfunctest.cpp
+1346869961 source:e:\work\code\codeblocks\firestarter\src\test\geomfunctest.cpp
 	<unittest++/UnitTest++.h>
 	"../lib/Lib.hpp"
 
-1346854580 source:e:\work\code\codeblocks\firestarter\src\systems\abstractisystem.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\systems\abstractisystem.cpp
 	"AbstractISystem.hpp"
 
-1346856373 e:\work\code\codeblocks\firestarter\src\systems\abstractisystem.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\systems\abstractisystem.hpp
 	<string>
 	"AbstractSystem.hpp"
 
-1346856340 e:\work\code\codeblocks\firestarter\src\systems\abstractsystem.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\systems\abstractsystem.hpp
 	<string>
 	"AbstractISystem.hpp"
 	"../scene/Scene.hpp"
 	"DataUpdate.hpp"
 
-1346853743 e:\work\code\codeblocks\firestarter\src\systems\dataupdate.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\systems\dataupdate.hpp
 
 1346853231 source:e:\work\code\codeblocks\firestarter\src\systems\irenderer.cpp
 	"Renderer.hpp"
@@ -498,31 +497,31 @@
 1346854660 source:e:\work\code\codeblocks\firestarter\src\systems\renderer.cpp
 	"Renderer.hpp"
 
-1346854806 source:e:\work\code\codeblocks\firestarter\src\systems\abstractsystem.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\systems\abstractsystem.cpp
 	"AbstractSystem.hpp"
 
-1346860149 e:\work\code\codeblocks\firestarter\src\renderer\system.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\renderer\system.hpp
 	<string>
 	"../systems/AbstractSystem.hpp"
 	"ISystem.hpp"
 	"Screen.hpp"
 
-1346859314 e:\work\code\codeblocks\firestarter\src\renderer\isystem.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\renderer\isystem.hpp
 	"../systems/AbstractISystem.hpp"
 
-1346859318 source:e:\work\code\codeblocks\firestarter\src\renderer\isystem.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\renderer\isystem.cpp
 	"ISystem.hpp"
 	"System.hpp"
 
-1346860666 source:e:\work\code\codeblocks\firestarter\src\renderer\system.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\renderer\system.cpp
 	"System.hpp"
 
-1346864479 e:\work\code\codeblocks\firestarter\src\renderer\screen.hpp
+1346868959 e:\work\code\codeblocks\firestarter\src\renderer\screen.hpp
 	<cmath>
 	<GL/glew.h>
 	<SDL/SDL.h>
 	"../lib/Lib.hpp"
 
-1346863144 source:e:\work\code\codeblocks\firestarter\src\renderer\screen.cpp
+1346868970 source:e:\work\code\codeblocks\firestarter\src\renderer\screen.cpp
 	"Screen.hpp"
 

@@ -20,7 +20,7 @@
 #ifndef __LIB_MATHFUNC_HPP_
 #define __LIB_MATHFUNC_HPP_
 
-#include <cmath>
+#include "../Lib.hpp"
 
 
 namespace Firestarter { namespace Lib {

@@ -1,0 +1,8 @@
+Firestarter Engine
+
+For now, the engine doesn't do much...
+
+Required libraries for compiling:
+ - libgl
+ - libglew
+ - libsdl

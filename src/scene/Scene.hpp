@@ -23,12 +23,15 @@
 #include "../Precompile.hpp"
 
 #include "Object.hpp"
+#include "Area.hpp"
 
 
 namespace Firestarter { namespace Scene {
 
-/* Universal Scene, Defining the Relationship of a Scene Object */
-
+/**
+* Universal scene object, keeps track of objects and handles scenegraphing
+* The data in each scene is independent of others
+*/
 
 class Scene {
 public:
@@ -38,8 +41,9 @@ public:
     void addObject(Object *obj);
 
 private:
-    Object *objects_head;
-    Object *objects_tail;
+    Object *p_objs_head;
+    Object *p_objs_tail;
+    Area *p_octree;
 };
 
 }} // Firestarter::Scene

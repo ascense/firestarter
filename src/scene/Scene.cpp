@@ -22,15 +22,17 @@
 
 namespace Firestarter { namespace Scene {
 
-Scene::Scene() :
-        objects_head(nullptr), objects_tail(nullptr) {}
+Scene::Scene()
+         : p_objs_head(nullptr), p_objs_tail(nullptr) {
+    p_octree = new Area();
+}
 
 
 Scene::~Scene() {
     Object *tmp;
-    while (objects_head != nullptr) {
-        tmp = objects_head;
-        objects_head = objects_head->next();
+    while (p_objs_head != nullptr) {
+        tmp = p_objs_head;
+        p_objs_head = p_objs_head->next();
         delete tmp;
     }
 }
@@ -40,12 +42,12 @@ void Scene::addObject(Object *obj) {
     if (obj == nullptr) // TODO: Debug exception function, global define for debugs
         throw Lib::FirestarterException("Null object added to scene");
 
-    if (objects_head == nullptr)
-        objects_head = obj;
+    if (p_objs_head == nullptr)
+        p_objs_head = obj;
     else
-        objects_tail->setNext(obj);
+        p_objs_tail->setNext(obj);
 
-    objects_tail = obj;
+    p_objs_tail = obj;
 }
 
 }} // Firestarter::Scene

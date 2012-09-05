@@ -17,30 +17,38 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_PLATFORMMGR_HPP_
-#define __MANAGERS_PLATFORMMGR_HPP_
+#ifndef __SCENE_AREA_HPP_
+#define __SCENE_AREA_HPP_
 
-#include "../Precompile.hpp"
+#include <string>
 
-
-
-namespace Firestarter { namespace Core {
-    class Engine; // Forward Declaration of Friend Class
-}}
+#include "../lib/Lib.hpp"
 
 
-namespace Firestarter { namespace Managers {
+namespace Firestarter { namespace Scene {
 
-/* Manager for Platform Specific Functionality */
+/* Very basic, non optimal quadtree implementation */
 
-class PlatformMgr {
-friend class Core::Engine;
+struct Area {
+    // TODO: Actually store scene information in the nodes
 
-protected:
-    PlatformMgr();
-    ~PlatformMgr();
+    Area();
+    ~Area();
+
+    std::string name;
+    int area_size;
+    int area_x;
+    int area_z;
+
+    int data;
+
+    Area *parent;
+    Area **children;
+
+    void split();
+    void merge();
 };
 
-}} // Firestarter::Managers
+}} // Firestarter::Scene
 
-#endif // __MANAGERS_PLATFORMMGR_HPP_
+#endif // __SCENE_AREA_HPP_

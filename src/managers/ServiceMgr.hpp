@@ -39,7 +39,6 @@ namespace Firestarter { namespace Managers {
 
 class ServiceMgr {
 friend class Core::Engine;
-friend class IServiceMgr;
 
 public:
     Systems::AbstractISystem* getSystemInterface(const std::string *name);

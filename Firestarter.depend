@@ -72,19 +72,20 @@
 
 1346868959 e:\work\code\codeblocks\firestarter\src\scene\object.hpp
 
-1346868970 source:e:\work\code\codeblocks\firestarter\src\scene\scene.cpp
+1346871338 source:e:\work\code\codeblocks\firestarter\src\scene\scene.cpp
 	"Scene.hpp"
 
 1344280411 "
 
-1346868959 e:\work\code\codeblocks\firestarter\src\scene\scene.hpp
+1346871675 e:\work\code\codeblocks\firestarter\src\scene\scene.hpp
 	"../Precompile.hpp"
 	"Object.hpp"
+	"Area.hpp"
 
 1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.cpp
 	"EnvironmentMgr.hpp"
 
-1346868959 e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.hpp
+1346871773 e:\work\code\codeblocks\firestarter\src\managers\environmentmgr.hpp
 	"../Precompile.hpp"
 
 1344351513 pile.hpp"
@@ -92,13 +93,13 @@
 1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\platformmgr.cpp
 	"PlatformMgr.hpp"
 
-1346868959 e:\work\code\codeblocks\firestarter\src\managers\platformmgr.hpp
+1346871779 e:\work\code\codeblocks\firestarter\src\managers\platformmgr.hpp
 	"../Precompile.hpp"
 
 1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\servicemgr.cpp
 	"ServiceMgr.hpp"
 
-1346868959 e:\work\code\codeblocks\firestarter\src\managers\servicemgr.hpp
+1346871785 e:\work\code\codeblocks\firestarter\src\managers\servicemgr.hpp
 	<string>
 	<vector>
 	"../lib/Lib.hpp"
@@ -110,13 +111,13 @@
 1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\statemgr.cpp
 	"StateMgr.hpp"
 
-1346868959 e:\work\code\codeblocks\firestarter\src\managers\statemgr.hpp
+1346871792 e:\work\code\codeblocks\firestarter\src\managers\statemgr.hpp
 	"../Precompile.hpp"
 
 1346868970 source:e:\work\code\codeblocks\firestarter\src\managers\taskmgr.cpp
 	"TaskMgr.hpp"
 
-1346868959 e:\work\code\codeblocks\firestarter\src\managers\taskmgr.hpp
+1346871756 e:\work\code\codeblocks\firestarter\src\managers\taskmgr.hpp
 	"../Precompile.hpp"
 
 1344969715 source:e:\work\code\codeblocks\firestarter\src\managers\ienvironmentmgr.cpp
@@ -524,4 +525,8 @@
 
 1346868970 source:e:\work\code\codeblocks\firestarter\src\renderer\screen.cpp
 	"Screen.hpp"
+
+1346872935 e:\work\code\codeblocks\firestarter\src\scene\area.hpp
+	<string>
+	"../lib/Lib.hpp"
 

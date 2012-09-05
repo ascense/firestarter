@@ -29,7 +29,6 @@ namespace Firestarter { namespace Managers {
 
 class EnvironmentMgr {
 friend class Core::Engine;
-friend class IEnvironmentMgr;
 
 protected:
     EnvironmentMgr();

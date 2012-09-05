@@ -9,3 +9,6 @@ Required libraries for compiling:
  
  Additionally, UnitTest++ is needed for the testcases
  
+ 
+ The engine design borrows heavily from the Intel article, "Designing the Framework of a Parallel Game Enigne"
+ 

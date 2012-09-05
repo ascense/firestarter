@@ -43,7 +43,6 @@ struct Task {
 
 class TaskMgr {
 friend class Core::Engine;
-friend class ITaskMgr;
 
 protected:
     TaskMgr();

@@ -35,7 +35,6 @@ namespace Firestarter { namespace Managers {
 
 class StateMgr {
 friend class Core::Engine;
-friend class IStateMgr;
 
 protected:
     StateMgr();

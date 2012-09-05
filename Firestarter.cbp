@@ -339,6 +339,18 @@
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
+		<Unit filename="src\scene\Area.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="src\scene\Area.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
 		<Unit filename="src\scene\Object.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />

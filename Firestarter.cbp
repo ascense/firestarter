@@ -8,22 +8,24 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug Library">
-				<Option output="bin\firestarter_dbg" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Debug" />
-				<Option object_output="obj\Debug" />
+				<Option output="bin/firestarter_dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug" />
 				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
 			<Target title="Release Library">
-				<Option output="bin\firestarter" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Release" />
-				<Option object_output="obj\Release" />
+				<Option output="bin/firestarter" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Release" />
+				<Option object_output="obj/Release" />
 				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++0x" />
@@ -34,106 +36,113 @@
 			</Target>
 			<Target title="Debug Engine Win">
 				<Option platforms="Windows;" />
-				<Option output="bin\Firestarter_dbg" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Debug" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Firestarter_dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="bin\firestarter_dbg.dll" />
+					<Add library="bin/firestarter_dbg.dll" />
 					<Add library="mingw32" />
-					<Add library="SDLmain" />
-					<Add library="SDL.dll" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
 				</Linker>
 			</Target>
 			<Target title="Debug Engine Unix">
 				<Option platforms="Unix;Mac;" />
-				<Option output="bin\Firestarter_dbg" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Debug" />
-				<Option object_output="obj\Debug\" />
+				<Option output="bin/Firestarter_dbg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Debug" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="bin\firestarter_dbg.so" />
+					<Add library="bin/firestarter_dbg.so" />
+					<Add library="GL" />
+					<Add library="GLEW" />
 				</Linker>
 			</Target>
 			<Target title="Release Engine Win">
 				<Option platforms="Windows;" />
-				<Option output="bin\Firestarter" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Release" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Firestarter" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Release" />
+				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++0x" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="bin\firestarter.dll" />
+					<Add library="bin/firestarter.dll" />
 					<Add library="mingw32" />
-					<Add library="SDLmain" />
-					<Add library="SDL.dll" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
 				</Linker>
 			</Target>
 			<Target title="Release Engine Unix">
 				<Option platforms="Unix;Mac;" />
-				<Option output="bin\Firestarter" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin\Release" />
-				<Option object_output="obj\Release\" />
+				<Option output="bin/Firestarter" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin/Release" />
+				<Option object_output="obj/Release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++0x" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="bin\firestarter.so" />
+					<Add library="bin/firestarter.so" />
+					<Add library="GL" />
+					<Add library="GLEW" />
 				</Linker>
 			</Target>
 			<Target title="Test Library Win">
 				<Option platforms="Windows;" />
-				<Option output="bin\UnitTestLibrary" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/UnitTestLibrary" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="bin" />
-				<Option object_output="obj\Debug\" />
+				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-std=c++0x" />
-					<Add option="-g" />
-				</Compiler>
-				<Linker>
-					<Add library="C:\MinGW\lib\unittest++.a" />
-					<Add library="bin\firestarter_dbg.dll" />
-				</Linker>
-			</Target>
-			<Target title="Test Library Unix">
-				<Option platforms="Unix;Mac;" />
-				<Option output="bin\UnitTestLibrary" prefix_auto="1" extension_auto="1" />
-				<Option working_dir=".\" />
-				<Option object_output="obj\Debug\" />
-				<Option type="1" />
-				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
 					<Add library="unittest++" />
-					<Add library="bin\firestarter_dbg.so" />
+					<Add library="bin/firestarter_dbg.dll" />
+				</Linker>
+			</Target>
+			<Target title="Test Library Unix">
+				<Option platforms="Unix;Mac;" />
+				<Option output="bin/UnitTestLibrary" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Compiler>
+					<Add option="-std=c++0x" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="unittest++" />
+					<Add library="bin/firestarter_dbg.so" />
 				</Linker>
 			</Target>
 		</Build>
@@ -146,282 +155,286 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="src\Main.cpp">
+		<Linker>
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+		</Linker>
+		<Unit filename="src/Main.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\Precompile.hpp">
+		<Unit filename="src/Precompile.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\core\Engine.cpp">
+		<Unit filename="src/core/Engine.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\core\Engine.hpp">
+		<Unit filename="src/core/Engine.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\lib\Lib.hpp" />
-		<Unit filename="src\lib\core\Exception.cpp">
+		<Unit filename="src/lib/Lib.hpp" />
+		<Unit filename="src/lib/core/Exception.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\core\Exception.hpp">
+		<Unit filename="src/lib/core/Exception.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\AABB.cpp">
+		<Unit filename="src/lib/geom/AABB.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\AABB.hpp">
+		<Unit filename="src/lib/geom/AABB.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\AABB2D.cpp">
+		<Unit filename="src/lib/geom/AABB2D.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\AABB2D.hpp">
+		<Unit filename="src/lib/geom/AABB2D.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\AABB3D.cpp">
+		<Unit filename="src/lib/geom/AABB3D.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\AABB3D.hpp">
+		<Unit filename="src/lib/geom/AABB3D.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\GeomFunc.cpp">
+		<Unit filename="src/lib/geom/GeomFunc.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\GeomFunc.hpp">
+		<Unit filename="src/lib/geom/GeomFunc.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\Vec2D.cpp">
+		<Unit filename="src/lib/geom/Vec2D.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\Vec2D.hpp">
+		<Unit filename="src/lib/geom/Vec2D.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\Vec3D.cpp">
+		<Unit filename="src/lib/geom/Vec3D.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\Vec3D.hpp">
+		<Unit filename="src/lib/geom/Vec3D.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\Vector.cpp">
+		<Unit filename="src/lib/geom/Vector.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\geom\Vector.hpp">
+		<Unit filename="src/lib/geom/Vector.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\math\MathFunc.cpp">
+		<Unit filename="src/lib/math/MathFunc.cpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\lib\math\MathFunc.hpp">
+		<Unit filename="src/lib/math/MathFunc.hpp">
 			<Option target="Debug Library" />
 			<Option target="Release Library" />
 		</Unit>
-		<Unit filename="src\managers\EnvironmentMgr.cpp">
+		<Unit filename="src/managers/EnvironmentMgr.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\EnvironmentMgr.hpp">
+		<Unit filename="src/managers/EnvironmentMgr.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\PlatformMgr.cpp">
+		<Unit filename="src/managers/PlatformMgr.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\PlatformMgr.hpp">
+		<Unit filename="src/managers/PlatformMgr.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\ServiceMgr.cpp">
+		<Unit filename="src/managers/ServiceMgr.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\ServiceMgr.hpp">
+		<Unit filename="src/managers/ServiceMgr.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\StateMgr.cpp">
+		<Unit filename="src/managers/StateMgr.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\StateMgr.hpp">
+		<Unit filename="src/managers/StateMgr.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\TaskMgr.cpp">
+		<Unit filename="src/managers/TaskMgr.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\managers\TaskMgr.hpp">
+		<Unit filename="src/managers/TaskMgr.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\renderer\ISystem.cpp">
+		<Unit filename="src/renderer/ISystem.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\renderer\ISystem.hpp">
+		<Unit filename="src/renderer/ISystem.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\renderer\Screen.cpp">
+		<Unit filename="src/renderer/Screen.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\renderer\Screen.hpp">
+		<Unit filename="src/renderer/Screen.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\renderer\System.cpp">
+		<Unit filename="src/renderer/System.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\renderer\System.hpp">
+		<Unit filename="src/renderer/System.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\scene\Area.cpp">
+		<Unit filename="src/scene/Area.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\scene\Area.hpp">
+		<Unit filename="src/scene/Area.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\scene\Object.cpp">
+		<Unit filename="src/scene/Object.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\scene\Object.hpp">
+		<Unit filename="src/scene/Object.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\scene\Scene.cpp">
+		<Unit filename="src/scene/Scene.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\scene\Scene.hpp">
+		<Unit filename="src/scene/Scene.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\systems\AbstractISystem.cpp">
+		<Unit filename="src/systems/AbstractISystem.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\systems\AbstractISystem.hpp">
+		<Unit filename="src/systems/AbstractISystem.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\systems\AbstractSystem.cpp">
+		<Unit filename="src/systems/AbstractSystem.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\systems\AbstractSystem.hpp">
+		<Unit filename="src/systems/AbstractSystem.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\systems\DataUpdate.hpp">
+		<Unit filename="src/systems/DataUpdate.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Release Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
 		</Unit>
-		<Unit filename="src\test\AABB2DTest.cpp">
+		<Unit filename="src/test/AABB2DTest.cpp">
 			<Option target="Test Library Win" />
 			<Option target="Test Library Unix" />
 		</Unit>
-		<Unit filename="src\test\GeomFuncTest.cpp">
+		<Unit filename="src/test/GeomFuncTest.cpp">
 			<Option target="Test Library Win" />
 			<Option target="Test Library Unix" />
 		</Unit>
-		<Unit filename="src\test\LibraryTest.cpp">
+		<Unit filename="src/test/LibraryTest.cpp">
 			<Option target="Test Library Win" />
 			<Option target="Test Library Unix" />
 		</Unit>
-		<Unit filename="src\test\Vec2DTest.cpp">
+		<Unit filename="src/test/Vec2DTest.cpp">
 			<Option target="Test Library Win" />
 			<Option target="Test Library Unix" />
 		</Unit>
-		<Unit filename="src\test\Vec3DTest.cpp">
+		<Unit filename="src/test/Vec3DTest.cpp">
 			<Option target="Test Library Win" />
 			<Option target="Test Library Unix" />
 		</Unit>

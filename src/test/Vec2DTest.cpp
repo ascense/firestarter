@@ -133,13 +133,10 @@ SUITE(Vec2D) {
     }
 
 
-    TEST_FIXTURE(Vec2DFixture, Vec2DOperatorCompoundAssign) {
-        *vec1 += *vec2;
-        CHECK_EQUAL(4, vec1->getX());
-        CHECK_EQUAL(6, vec1->getY());
+    TEST_FIXTURE(Vec2DFixture, Vec2DAssignment) {
+        Firestarter::Lib::Vec2D vec(2, 2);
+        vec = *vec2;
 
-        *vec1 -= *vec2;
-        CHECK_EQUAL(1, vec1->getX());
-        CHECK_EQUAL(2, vec1->getY());
+        CHECK(vec == *vec2);
     }
 }

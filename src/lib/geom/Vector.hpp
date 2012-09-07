@@ -30,6 +30,8 @@ namespace Firestarter { namespace Lib {
 class Vector {
 public:
     Vector(int dim);
+    Vector(Vector *vec);
+    ~Vector();
 
     int getDimensions();
     void setValue(int dim, float val);
@@ -37,14 +39,10 @@ public:
 
     void add(const Vector *vec);
     void subtract(const Vector *vec);
-    void multiply(int scalar);
+    void multiply(float scalar);
     void mirrorAxis(int dim);
 
-    Vector& operator+=(const Vector &rhs);
-    Vector& operator-=(const Vector &rhs);
-    Vector& operator+(const Vector &other);
-    Vector& operator-(const Vector &other);
-    Vector& operator=(const Vector &rhs);
+    void operator=(const Vector &other) const;
     bool operator==(const Vector &other) const;
     bool operator!=(const Vector &other) const;
 
@@ -54,9 +52,6 @@ public:
     static float dotProduct(Vector *vec1, Vector *vec2);
 
 protected:
-    Vector(Vector *vec);
-    ~Vector();
-
     static void assertIDInRange(const Vector *vec, int dim);
     static void assertDimensions(const Vector *vec1, const Vector *vec2);
 

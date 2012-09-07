@@ -138,16 +138,11 @@ SUITE(Vec3D) {
     }
 
 
-    TEST_FIXTURE(Vec3DFixture, Vec3DOperatorCompoundAssign) {
-        *vec1 += *vec2;
-        CHECK_EQUAL(4, vec1->getX());
-        CHECK_EQUAL(6, vec1->getY());
-        CHECK_EQUAL(8, vec1->getZ());
+    TEST_FIXTURE(Vec3DFixture, Vec3DAssignment) {
+        Firestarter::Lib::Vec3D vec(3, 3, 3);
+        vec = *vec2;
 
-        *vec1 -= *vec2;
-        CHECK_EQUAL(1, vec1->getX());
-        CHECK_EQUAL(2, vec1->getY());
-        CHECK_EQUAL(3, vec1->getZ());
+        CHECK(vec == *vec2);
     }
 }
 

@@ -27,7 +27,7 @@ namespace Firestarter { namespace Lib {
 
 /* 2-Dimensional floating point vector */
 
-class Vec2D : public Lib::Vector {
+class Vec2D : public Vector {
 public:
     Vec2D();
     Vec2D(float x, float y);
@@ -41,12 +41,6 @@ public:
     float getY();
 
     void flipAxes();
-
-    Vec2D& operator+=(const Vec2D &rhs);
-    Vec2D& operator-=(const Vec2D &rhs);
-    Vec2D& operator+(const Vec2D &other);
-    Vec2D& operator-(const Vec2D &other);
-    Vec2D& operator=(const Vec2D &rhs);
 };
 
 }} // Firestarter::Lib

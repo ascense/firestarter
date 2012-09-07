@@ -22,22 +22,10 @@
 
 namespace Firestarter { namespace Core {
 
-Engine::Engine() {
-    mgr_task = new Managers::TaskMgr();
-    mgr_state = new Managers::StateMgr();
-    mgr_srv = new Managers::ServiceMgr();
-    mgr_env = new Managers::EnvironmentMgr();
-    mgr_pf = new Managers:: PlatformMgr();
-}
+Engine::Engine() {}
 
 
-Engine::~Engine() {
-    delete mgr_task;
-    delete mgr_state;
-    delete mgr_srv;
-    delete mgr_env;
-    delete mgr_pf;
-}
+Engine::~Engine() {}
 
 
 void Engine::run() {
@@ -47,28 +35,52 @@ void Engine::run() {
 
 
 void Engine::init() {
-    mgr_srv->registerSystem(new Renderer::System());
+    mgr_srv.registerSystem(new Renderer::System());
 
-    mgr_srv->init();
+    mgr_srv.init();
 }
 
 
 void Engine::main() {
-    while (mgr_state->getRunning()) {
+    while (true) {
         processInput();
+        if (!mgr_state.getRunning())
+            break;
+
         processTasks();
 
         distribute();
 
         // check task results
-
-        // TMP EXIT
-        mgr_state->stop();
     }
 }
 
 
-void Engine::processInput() {}
+void Engine::processInput() {
+    SDL_Event event;
+    while (SDL_PollEvent(&event)) {
+        switch(event.type) {
+            case SDL_MOUSEMOTION:
+                mgr_input.updateMouse(&event.motion);
+                break;
+
+            case SDL_KEYDOWN:
+                mgr_input.setKeyDown(&event.key.keysym.sym);
+                break;
+
+            case SDL_KEYUP:
+                mgr_input.setKeyUp(&event.key.keysym.sym);
+                break;
+
+            case SDL_QUIT:
+                mgr_state.stop();
+                return;
+
+            default:
+                break;
+        }
+    }
+}
 
 
 void Engine::processTasks() {}

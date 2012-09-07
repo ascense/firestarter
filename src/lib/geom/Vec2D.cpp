@@ -64,27 +64,5 @@ void Vec2D::flipAxes() {
     this->setValue(2, tmp);
 }
 
-
-// Lovely C++ inheritance of operator overloads );
-Vec2D& Vec2D::operator+=(const Vec2D &rhs) {
-    return *(Vec2D*) &(((Vector*) this)->operator+=(rhs));
-}
-
-Vec2D& Vec2D::operator-=(const Vec2D &rhs) {
-    return *(Vec2D*) &(((Vector*) this)->operator-=(rhs));
-}
-
-Vec2D& Vec2D::operator+(const Vec2D &other) {
-    return *(Vec2D*) &(((Vector*) this)->operator+(other));
-}
-
-Vec2D& Vec2D::operator-(const Vec2D &other) {
-    return *(Vec2D*) &(((Vector*) this)->operator-(other));
-}
-
-Vec2D& Vec2D::operator=(const Vec2D &rhs) {
-    return *(Vec2D*) &(((Vector*) this)->operator=(rhs));
-}
-
 }} // Firestarter::Lib
 

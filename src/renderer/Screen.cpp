@@ -27,7 +27,7 @@ Screen::Screen(int width, int height, bool fullscreen) throw (Lib::FirestarterEx
     p_zfar = 500;
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
-        throw Lib::CriticalError("Failed to initialize SDL");
+        throw Lib::CriticalError("Failed to initialize SDL video subsystem");
 
     if (!setVideoMode(width, height, -1, fullscreen)) {
         SDL_Quit();
@@ -121,7 +121,7 @@ bool Screen::setVideoMode(int width, int height, int bpp, bool fullscreen) {
 
     setProjection(90, p_znear, p_zfar);
 
-    setMouseGrab(true);
+    setMouseGrab(fullscreen);
 
     return true;
 }

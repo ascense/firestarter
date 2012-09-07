@@ -22,6 +22,7 @@
 
 #include "../Precompile.hpp"
 
+#include "../Systems/AbstractSystem.hpp"
 
 
 namespace Firestarter { namespace Core {
@@ -34,8 +35,11 @@ namespace Firestarter { namespace Managers {
 /* Manager for Adding, Scheduling and Checking System Tasks */
 
 struct Task {
-    Task(); // TODO: Parameters: System, Scene
+    Task(Systems::AbstractSystem *sys, Scene::Scene *scene);
     ~Task();
+
+    Systems::AbstractSystem *system;
+    Scene::Scene *scene;
 
     Task *next;
 };
@@ -48,14 +52,16 @@ protected:
     TaskMgr();
     ~TaskMgr();
 
-    void addTask();
+    void addTask(Task *task);
     void checkTask();
+
     void run();
 
 private:
-    Task *taskQueue;
-    void *taskSchedule;
-    void *taskResults;
+    Task *p_taskQueue;
+    Task *p_taskQueueTail;
+    void *p_taskSchedule;
+    void *p_taskResults;
 };
 
 }} // Firestarter::Managers

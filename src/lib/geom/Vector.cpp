@@ -80,57 +80,19 @@ void Vector::subtract(const Vector *vec) {
 }
 
 
-void Vector::multiply(int scalar) {
+void Vector::multiply(float scalar) {
     for (int i = 0; i < m_dimensions; ++i)
         m_values[i] *= scalar;
 }
 
 
-// Operator Overloads
-
-Vector& Vector::operator+=(const Vector &rhs) {
-    add(&rhs);
-
-    return *this;
-}
-
-
-Vector& Vector::operator-=(const Vector &rhs) {
-    subtract(&rhs);
-
-    return *this;
-}
-
-
-Vector& Vector::operator+(const Vector &other) {
-    assertDimensions(this, &other);
-
-    Vector *ret = new Vector(this);
-    ret->add(&other);
-
-    return *ret;
-}
-
-
-Vector& Vector::operator-(const Vector &other) {
-    assertDimensions(this, &other);
-
-    Vector *ret = new Vector(this);
-    ret->subtract(&other);
-
-    return *ret;
-}
-
-
-Vector& Vector::operator=(const Vector &rhs) {
+void Vector::operator=(const Vector &rhs) const {
     assertDimensions(this, &rhs);
 
     if (this != &rhs) {
         for (int i = 0; i < m_dimensions; ++i)
             m_values[i] = rhs.m_values[i];
     }
-
-    return *this;
 }
 
 

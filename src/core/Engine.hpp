@@ -22,12 +22,7 @@
 
 #include "../Precompile.hpp"
 
-#include "../managers/TaskMgr.hpp"
-#include "../managers/StateMgr.hpp"
-#include "../managers/ServiceMgr.hpp"
-#include "../managers/EnvironmentMgr.hpp"
-#include "../managers/PlatformMgr.hpp"
-
+#include "../managers/Managers.hpp"
 #include "../renderer/System.hpp"
 
 
@@ -51,11 +46,12 @@ private:
     void distribute();
 
     // Managers:
-    Managers::TaskMgr *mgr_task;
-    Managers::StateMgr *mgr_state;
-    Managers::ServiceMgr *mgr_srv;
-    Managers::EnvironmentMgr *mgr_env;
-    Managers::PlatformMgr *mgr_pf;
+    Managers::EnvironmentMgr mgr_env;
+    Managers::InputMgr mgr_input;
+    Managers::PlatformMgr mgr_pf;
+    Managers::ServiceMgr mgr_srv;
+    Managers::StateMgr mgr_state;
+    Managers::TaskMgr mgr_task;
 };
 
 }} // Firestarter::Core

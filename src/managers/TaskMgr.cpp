@@ -24,7 +24,8 @@ namespace Firestarter { namespace Managers {
 
 // CLASS: Task //
 
-Task::Task() {}
+Task::Task(Systems::AbstractSystem *sys, Scene::Scene *scene)
+         : system(sys), scene(scene), next(nullptr) {}
 
 
 Task::~Task() {}
@@ -33,9 +34,34 @@ Task::~Task() {}
 // CLASS: TaskMgr //
 
 TaskMgr::TaskMgr() :
-        taskQueue(nullptr), taskSchedule(nullptr), taskResults(nullptr) {}
+        p_taskQueue(nullptr), p_taskQueueTail(nullptr), p_taskSchedule(nullptr), p_taskResults(nullptr) {}
 
 
-TaskMgr::~TaskMgr() {}
+TaskMgr::~TaskMgr() {
+    Task *task;
+    while (p_taskQueue != nullptr) {
+        task = p_taskQueue;
+        p_taskQueue = task->next;
+
+        delete task;
+    }
+}
+
+
+void TaskMgr::addTask(Task *task) {
+    if (p_taskQueue == nullptr) {
+        p_taskQueue = task;
+        p_taskQueueTail = task;
+    } else {
+        p_taskQueueTail->next = task;
+        p_taskQueueTail = task;
+    }
+}
+
+
+void TaskMgr::run() {
+    // Assign tasks to the threads in the thread pool
+    // Due to the limitations of SDL, rendering has to (always) be done in this thread
+}
 
 }} // Firestarter::Managers

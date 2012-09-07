@@ -108,7 +108,7 @@ void InputMgr::assertKeyInRange(const SDLKey *key) {
 void InputMgr::updateMouseScaling() {
     p_mouseScaling.setX(p_mouseYaw);
     p_mouseScaling.setY(p_mousePitch);
-    p_mouseScaling *= p_mouseFactor;
+    p_mouseScaling.multiply(p_mouseFactor);
 }
 
 }} // Firestarter::Managers

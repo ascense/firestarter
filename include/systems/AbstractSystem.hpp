@@ -22,8 +22,9 @@
 
 #include <string>
 
+#include "scene/Scene.hpp"
+
 #include "AbstractISystem.hpp"
-#include "../scene/Scene.hpp"
 #include "DataUpdate.hpp"
 
 

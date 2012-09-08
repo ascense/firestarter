@@ -17,47 +17,21 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_SERVICEMGR_HPP_
-#define __MANAGERS_SERVICEMGR_HPP_
+#include "managers/PlatformMgr.hpp"
 
-#include <string>
-#include <vector>
-
-#include "../lib/Lib.hpp"
-#include "../systems/AbstractSystem.hpp"
-#include "../systems/AbstractISystem.hpp"
-
-
-namespace Firestarter { namespace Core {
-    class Engine; // Forward Declaration of Friend Class
-}}
+#include <unistd.h>
 
 
 namespace Firestarter { namespace Managers {
 
-/* Manager for Systems and Services */
+PlatformMgr::PlatformMgr() {}
 
-class ServiceMgr {
-friend class Core::Engine;
 
-public:
-    Systems::AbstractISystem* getSystemInterface(const std::string *name);
+PlatformMgr::~PlatformMgr() {}
 
-protected:
-    ServiceMgr();
-    ~ServiceMgr();
 
-    void init();
-
-    void registerSystem(Systems::AbstractSystem *sys);
-
-    int getSystemID(const std::string *name); // use lookup
-
-private:
-    std::vector<Systems::AbstractSystem*> p_systems;
-    // TODO: Lookup-table(sys_name) -> sys_id
-};
+int PlatformMgr::getCPUCores() {
+    return sysconf(_SC_NPROCESSORS_ONLN);
+}
 
 }} // Firestarter::Managers
-
-#endif // __MANAGERS_SERVICEMGR_HPP_

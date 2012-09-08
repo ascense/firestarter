@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Object.hpp"
+#include "scene/Object.hpp"
 
 
 namespace Firestarter { namespace Scene {

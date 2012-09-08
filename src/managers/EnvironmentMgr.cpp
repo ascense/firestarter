@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "EnvironmentMgr.hpp"
+#include "managers/EnvironmentMgr.hpp"
 
 
 namespace Firestarter { namespace Managers {

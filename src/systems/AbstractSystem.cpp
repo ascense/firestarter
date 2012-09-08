@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "AbstractSystem.hpp"
+#include "systems/AbstractSystem.hpp"
 
 
 namespace Firestarter { namespace Systems {

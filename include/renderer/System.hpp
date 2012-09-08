@@ -17,30 +17,41 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_ENVIRONMENTMGR_HPP_
-#define __MANAGERS_ENVIRONMENTMGR_HPP_
+#ifndef __RENDERER_SYSTEM_HPP_
+#define __RENDERER_SYSTEM_HPP_
 
-#include "../Precompile.hpp"
+#include <string>
+
+#include "systems/AbstractSystem.hpp"
+
+#include "ISystem.hpp"
+#include "Screen.hpp"
 
 
-namespace Firestarter { namespace Managers {
+namespace Firestarter { namespace Renderer {
 
-/* Manager for Engine Variables */
+/* Rendering subsystem */
 
-class EnvironmentMgr {
-friend class Core::Engine;
+class System : public Systems::AbstractSystem {
+friend class ISystem;
 
-protected:
-    EnvironmentMgr();
-    ~EnvironmentMgr();
+public:
+    System();
+    ~System();
 
-    void addVariable();
-    void delVariable();
+    void init();
 
-    void setValue();
-    void getValue();
+    void tick(double delta, const Scene::Scene* scene);
+    void notify(Systems::DataUpdate* upd);
+
+    const ISystem* getInterface();
+
+private:
+    ISystem *p_iface;
+
+    Screen *p_screen;
 };
 
-}} // Firestarter::Managers
+}} // Firestarter::Renderer
 
-#endif // __MANAGERS_ENVIRONMENTMGR_HPP_
+#endif // __RENDERER_SYSTEM_HPP_

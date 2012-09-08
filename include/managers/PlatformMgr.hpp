@@ -17,34 +17,32 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "lib/geom/AABB2D.hpp"
+#ifndef __MANAGERS_PLATFORMMGR_HPP_
+#define __MANAGERS_PLATFORMMGR_HPP_
+
+#include "Precompile.hpp"
 
 
-namespace Firestarter { namespace Lib {
 
-AABB2D::AABB2D(float x, float y) : Lib::AABB(2) {
-    Vec2D vec = Vec2D(x, y);
-    setMinCoords(&vec);
-    setMaxCoords(&vec);
-}
+namespace Firestarter { namespace Core {
+    class Engine; // Forward Declaration of Friend Class
+}}
 
 
-AABB2D::AABB2D(Vec2D *vec) : Lib::AABB(2) {
-    setMinCoords(vec);
-    setMaxCoords(vec);
-}
+namespace Firestarter { namespace Managers {
 
+/* Manager for Platform Specific Functionality */
 
-AABB2D::~AABB2D() {}
+class PlatformMgr {
+friend class Core::Engine;
 
+protected:
+    PlatformMgr();
+    ~PlatformMgr();
 
-Vec2D* AABB2D::getMinCoords() {
-    return (Vec2D*) this->p_getMinCoords();
-}
+    int getCPUCores();
+};
 
+}} // Firestarter::Managers
 
-Vec2D* AABB2D::getMaxCoords() {
-    return (Vec2D*) this->p_getMaxCoords();
-}
-
-}} // Firestarter::Lib
+#endif // __MANAGERS_PLATFORMMGR_HPP_

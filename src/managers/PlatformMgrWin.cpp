@@ -17,7 +17,9 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "PlatformMgr.hpp"
+#include "managers/PlatformMgr.hpp"
+
+#include <Windows.h>
 
 
 namespace Firestarter { namespace Managers {
@@ -26,5 +28,13 @@ PlatformMgr::PlatformMgr() {}
 
 
 PlatformMgr::~PlatformMgr() {}
+
+
+int PlatformMgr::getCPUCores() {
+    SYSTEM_INFO sysinfo;
+    GetSystemInfo(&sysinfo);
+
+    return sysinfo.dwNumberOfProcessors;
+}
 
 }} // Firestarter::Managers

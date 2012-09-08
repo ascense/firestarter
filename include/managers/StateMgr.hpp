@@ -17,40 +17,36 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __RENDERER_SYSTEM_HPP_
-#define __RENDERER_SYSTEM_HPP_
+#ifndef __MANAGERS_STATEMGR_HPP_
+#define __MANAGERS_STATEMGR_HPP_
 
-#include <string>
-
-#include "../systems/AbstractSystem.hpp"
-#include "ISystem.hpp"
-#include "Screen.hpp"
+#include "Precompile.hpp"
 
 
-namespace Firestarter { namespace Renderer {
 
-/* Rendering subsystem */
+namespace Firestarter { namespace Core {
+    class Engine; // Forward Declaration of Friend Class
+}}
 
-class System : public Systems::AbstractSystem {
-friend class ISystem;
 
-public:
-    System();
-    ~System();
+namespace Firestarter { namespace Managers {
 
-    void init();
+/* Manager for Global and Shared State Information */
 
-    void tick(double delta, const Scene::Scene* scene);
-    void notify(Systems::DataUpdate* upd);
+class StateMgr {
+friend class Core::Engine;
 
-    const ISystem* getInterface();
+protected:
+    StateMgr();
+    ~StateMgr();
+
+    bool getRunning();
+    void stop();
 
 private:
-    ISystem *p_iface;
-
-    Screen *p_screen;
+    bool running;
 };
 
-}} // Firestarter::Renderer
+}} // Firestarter::Managers
 
-#endif // __RENDERER_SYSTEM_HPP_
+#endif // __MANAGERS_STATEMGR_HPP_

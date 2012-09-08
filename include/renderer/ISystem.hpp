@@ -17,46 +17,25 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __RENDERER_SCREEN_HPP_
-#define __RENDERER_SCREEN_HPP_
+#ifndef __RENDERER_ISYSTEM_HPP_
+#define __RENDERER_ISYSTEM_HPP_
 
-#include <cmath>
-#include <GL/glew.h>
-#include <SDL/SDL.h>
-
-#include "../lib/Lib.hpp"
+#include "systems/AbstractISystem.hpp"
 
 
 namespace Firestarter { namespace Renderer {
 
-class Screen {
+class System;
+
+
+/* External Interface for rendering subsystem */
+
+class ISystem : public Systems::AbstractISystem {
 public:
-    Screen(int width, int height, bool fullscreen) throw (Lib::FirestarterException);
-    ~Screen();
-
-    void draw();
-
-protected:
-    void setGLBuffer(int col_bits, int depth_bits);
-    bool setVideoMode(int width, int height, int bpp, bool fullscreen);
-    void setProjection(int fov, double near, double far);
-    void setShading();
-
-    void setMouseGrab(bool grabbed);
-    void setVSync(bool vsync);
-    void setFov(int fov);
-
-    void checkGLErr();
-
-private:
-    SDL_Surface *p_surface;
-
-    int p_width, p_height;
-    bool p_fullscreen;
-
-    double p_znear, p_zfar;
+    ISystem(System *sys);
+    ~ISystem();
 };
 
 }} // Firestarter::Renderer
 
-#endif // __RENDERER_SCREEN_HPP_
+#endif // __RENDERER_ISYSTEM_HPP_

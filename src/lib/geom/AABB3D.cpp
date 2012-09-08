@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "AABB3D.hpp"
+#include "lib/geom/AABB3D.hpp"
 
 
 namespace Firestarter { namespace Lib {

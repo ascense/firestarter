@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "ServiceMgr.hpp"
+#include "managers/ServiceMgr.hpp"
 
 
 namespace Firestarter { namespace Managers {

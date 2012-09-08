@@ -17,11 +17,15 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_STATEMGR_HPP_
-#define __MANAGERS_STATEMGR_HPP_
+#ifndef __MANAGERS_SERVICEMGR_HPP_
+#define __MANAGERS_SERVICEMGR_HPP_
 
-#include "../Precompile.hpp"
+#include <string>
+#include <vector>
 
+#include "lib/Lib.hpp"
+#include "systems/AbstractSystem.hpp"
+#include "systems/AbstractISystem.hpp"
 
 
 namespace Firestarter { namespace Core {
@@ -31,22 +35,29 @@ namespace Firestarter { namespace Core {
 
 namespace Firestarter { namespace Managers {
 
-/* Manager for Global and Shared State Information */
+/* Manager for Systems and Services */
 
-class StateMgr {
+class ServiceMgr {
 friend class Core::Engine;
 
-protected:
-    StateMgr();
-    ~StateMgr();
+public:
+    Systems::AbstractISystem* getSystemInterface(const std::string *name);
 
-    bool getRunning();
-    void stop();
+protected:
+    ServiceMgr();
+    ~ServiceMgr();
+
+    void init();
+
+    void registerSystem(Systems::AbstractSystem *sys);
+
+    int getSystemID(const std::string *name); // use lookup
 
 private:
-    bool running;
+    std::vector<Systems::AbstractSystem*> p_systems;
+    // TODO: Lookup-table(sys_name) -> sys_id
 };
 
 }} // Firestarter::Managers
 
-#endif // __MANAGERS_STATEMGR_HPP_
+#endif // __MANAGERS_SERVICEMGR_HPP_

@@ -22,8 +22,8 @@
 
 #include <SDL/SDL.h>
 
-#include "../Precompile.hpp"
-#include "../lib/Lib.hpp"
+#include "Precompile.hpp"
+#include "lib/Lib.hpp"
 
 
 namespace Firestarter { namespace Managers {

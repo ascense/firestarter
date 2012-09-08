@@ -17,30 +17,30 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_PLATFORMMGR_HPP_
-#define __MANAGERS_PLATFORMMGR_HPP_
+#ifndef __MANAGERS_ENVIRONMENTMGR_HPP_
+#define __MANAGERS_ENVIRONMENTMGR_HPP_
 
-#include "../Precompile.hpp"
-
-
-
-namespace Firestarter { namespace Core {
-    class Engine; // Forward Declaration of Friend Class
-}}
+#include "Precompile.hpp"
 
 
 namespace Firestarter { namespace Managers {
 
-/* Manager for Platform Specific Functionality */
+/* Manager for Engine Variables */
 
-class PlatformMgr {
+class EnvironmentMgr {
 friend class Core::Engine;
 
 protected:
-    PlatformMgr();
-    ~PlatformMgr();
+    EnvironmentMgr();
+    ~EnvironmentMgr();
+
+    void addVariable();
+    void delVariable();
+
+    void setValue();
+    void getValue();
 };
 
 }} // Firestarter::Managers
 
-#endif // __MANAGERS_PLATFORMMGR_HPP_
+#endif // __MANAGERS_ENVIRONMENTMGR_HPP_

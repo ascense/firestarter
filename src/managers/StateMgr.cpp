@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "StateMgr.hpp"
+#include "managers/StateMgr.hpp"
 
 
 namespace Firestarter { namespace Managers {

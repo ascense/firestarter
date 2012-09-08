@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "GeomFunc.hpp"
+#include "lib/geom/GeomFunc.hpp"
 
 
 namespace Firestarter { namespace Lib {

@@ -17,7 +17,7 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "Vector.hpp"
+#include "lib/geom/Vector.hpp"
 
 
 namespace Firestarter { namespace Lib {

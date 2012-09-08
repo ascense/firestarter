@@ -17,43 +17,52 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __CORE_ENGINE_HPP_
-#define __CORE_ENGINE_HPP_
+#ifndef __MANAGERS_TASKMGR_HPP_
+#define __MANAGERS_TASKMGR_HPP_
 
-#include "../Precompile.hpp"
-
-#include "../managers/Managers.hpp"
-#include "../renderer/System.hpp"
+#include "Precompile.hpp"
+#include "systems/AbstractSystem.hpp"
 
 
 namespace Firestarter { namespace Core {
+    class Engine; // Forward Declaration of Friend Class
+}}
 
-/* Engine Framework and Main Loop */
 
-class Engine {
-public:
-    Engine();
-    ~Engine();
+namespace Firestarter { namespace Managers {
+
+/* Manager for Adding, Scheduling and Checking System Tasks */
+
+struct Task {
+    Task(Systems::AbstractSystem *sys, Scene::Scene *scene);
+    ~Task();
+
+    Systems::AbstractSystem *system;
+    Scene::Scene *scene;
+
+    Task *next;
+};
+
+
+class TaskMgr {
+friend class Core::Engine;
+
+protected:
+    TaskMgr();
+    ~TaskMgr();
+
+    void addTask(Task *task);
+    void checkTask();
 
     void run();
 
 private:
-    void init();
-    void main();
-
-    void processInput();
-    void processTasks();
-    void distribute();
-
-    // Managers:
-    Managers::EnvironmentMgr mgr_env;
-    Managers::InputMgr mgr_input;
-    Managers::PlatformMgr mgr_pf;
-    Managers::ServiceMgr mgr_srv;
-    Managers::StateMgr mgr_state;
-    Managers::TaskMgr mgr_task;
+    Task *p_taskQueue;
+    Task *p_taskQueueTail;
+    void *p_taskSchedule;
+    void *p_taskResults;
 };
 
-}} // Firestarter::Core
+}} // Firestarter::Managers
 
-#endif // __CORE_ENGINE_HPP_
+#endif // __MANAGERS_TASKMGR_HPP_

@@ -17,35 +17,38 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SCENE_SCENE_HPP_
-#define __SCENE_SCENE_HPP_
+#ifndef __SCENE_AREA_HPP_
+#define __SCENE_AREA_HPP_
 
-#include "../Precompile.hpp"
+#include <string>
 
-#include "Object.hpp"
-#include "Area.hpp"
+#include "lib/Lib.hpp"
 
 
 namespace Firestarter { namespace Scene {
 
-/**
-* Universal scene object, keeps track of objects and handles scenegraphing
-* The data in each scene is independent of others
-*/
+/* Very basic, non optimal quadtree implementation */
 
-class Scene {
-public:
-    Scene();
-    ~Scene();
+struct Area {
+    // TODO: Actually store scene information in the nodes
 
-    void addObject(Object *obj);
+    Area();
+    ~Area();
 
-private:
-    Object *p_objs_head;
-    Object *p_objs_tail;
-    Area *p_octree;
+    std::string name;
+    int area_size;
+    int area_x;
+    int area_z;
+
+    int data;
+
+    Area *parent;
+    Area **children;
+
+    void split();
+    void merge();
 };
 
 }} // Firestarter::Scene
 
-#endif // __SCENE_SCENE_HPP_
+#endif // __SCENE_AREA_HPP_

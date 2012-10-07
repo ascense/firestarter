@@ -45,7 +45,6 @@ Screen::Screen(int width, int height, bool fullscreen) throw (Lib::FirestarterEx
 
 
 Screen::~Screen() {
-    SDL_FreeSurface(p_surface);
     SDL_Quit();
 }
 
@@ -114,10 +113,8 @@ bool Screen::setVideoMode(int width, int height, int bpp, bool fullscreen) {
 
     // for now, exit incase doublebuffering was not supported
     int dbuf;
-    if (SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &dbuf) < 0 || dbuf != 1) {
-        SDL_FreeSurface(p_surface);
+    if (SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &dbuf) < 0 || dbuf != 1)
         return false;
-    }
 
     setProjection(90, p_znear, p_zfar);
 

@@ -19,10 +19,17 @@
 
 #include "core/Engine.hpp"
 
+#include <string>
+
 
 namespace Firestarter { namespace Core {
 
-Engine::Engine() {}
+Engine* Engine::p_instance = 0;
+
+
+Engine::Engine() {
+    Engine::p_instance = this;
+}
 
 
 Engine::~Engine() {}
@@ -38,6 +45,7 @@ void Engine::init() {
     mgr_srv.registerSystem(new Renderer::System());
 
     mgr_srv.init();
+    mgr_task.init();
 }
 
 
@@ -46,6 +54,9 @@ void Engine::main() {
         processInput();
         if (!mgr_state.getRunning())
             break;
+
+        if (mgr_input.isKeyDown(SDLK_ESCAPE))
+            mgr_state.stop();
 
         processTasks();
 
@@ -65,11 +76,11 @@ void Engine::processInput() {
                 break;
 
             case SDL_KEYDOWN:
-                mgr_input.setKeyDown(&event.key.keysym.sym);
+                mgr_input.setKeyDown(event.key.keysym.sym);
                 break;
 
             case SDL_KEYUP:
-                mgr_input.setKeyUp(&event.key.keysym.sym);
+                mgr_input.setKeyUp(event.key.keysym.sym);
                 break;
 
             case SDL_QUIT:
@@ -83,9 +94,48 @@ void Engine::processInput() {
 }
 
 
-void Engine::processTasks() {}
+void Engine::processTasks() {
+    mgr_task.addTask(
+        new Managers::Task(mgr_srv.getSystem(mgr_srv.getSystemID(new std::string("renderer"))), &p_scene)
+    );
+
+    mgr_task.schedule();
+    mgr_task.run();
+}
 
 
 void Engine::distribute() {}
+
+
+/** Static Accessors: **/
+
+Managers::EnvironmentMgr* Engine::getEnvironmentMgr() {
+    return &(Engine::p_instance->mgr_env);
+}
+
+
+Managers::InputMgr* Engine::getInputMgr() {
+    return &(Engine::p_instance->mgr_input);
+}
+
+
+Managers::PlatformMgr* Engine::getPlatformMgr() {
+    return &(Engine::p_instance->mgr_pf);
+}
+
+
+Managers::ServiceMgr* Engine::getServiceMgr() {
+    return &(Engine::p_instance->mgr_srv);
+}
+
+
+Managers::StateMgr* Engine::getStateMgr() {
+    return &(Engine::p_instance->mgr_state);
+}
+
+
+Managers::TaskMgr* Engine::getTaskMgr() {
+    return &(Engine::p_instance->mgr_task);
+}
 
 }} // Firestarter::Core

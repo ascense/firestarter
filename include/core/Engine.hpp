@@ -20,7 +20,6 @@
 #ifndef __CORE_ENGINE_HPP_
 #define __CORE_ENGINE_HPP_
 
-#include "Precompile.hpp"
 #include "managers/Managers.hpp"
 #include "renderer/System.hpp"
 
@@ -35,6 +34,18 @@ public:
     ~Engine();
 
     void run();
+
+    /* Singleton-like handling of manager access
+    *  These are only for public access to the managers,
+    *+  the Engine-class owns all the actual instances.
+    *  Ugly, but functional...
+    */
+    static Managers::EnvironmentMgr* getEnvironmentMgr();
+    static Managers::InputMgr* getInputMgr();
+    static Managers::PlatformMgr* getPlatformMgr();
+    static Managers::ServiceMgr* getServiceMgr();
+    static Managers::StateMgr* getStateMgr();
+    static Managers::TaskMgr* getTaskMgr();
 
 private:
     void init();
@@ -51,6 +62,10 @@ private:
     Managers::ServiceMgr mgr_srv;
     Managers::StateMgr mgr_state;
     Managers::TaskMgr mgr_task;
+
+    Scene::Scene p_scene;
+
+    static Engine* p_instance;
 };
 
 }} // Firestarter::Core

@@ -24,13 +24,7 @@
 
 namespace Firestarter { namespace Managers {
 
-PlatformMgr::PlatformMgr() {}
-
-
-PlatformMgr::~PlatformMgr() {}
-
-
-int PlatformMgr::getCPUCores() {
+int PlatformMgr::pf_getCPUCores() {
     return sysconf(_SC_NPROCESSORS_ONLN);
 }
 

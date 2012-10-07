@@ -29,4 +29,3 @@
 #include "TaskMgr.hpp"
 
 #endif // __MANAGERS_MANAGERS_HPP
-

@@ -20,8 +20,9 @@
 #ifndef __MANAGERS_PLATFORMMGR_HPP_
 #define __MANAGERS_PLATFORMMGR_HPP_
 
-#include "Precompile.hpp"
+#include <boost/thread/mutex.hpp>
 
+#include "Shared.hpp"
 
 
 namespace Firestarter { namespace Core {
@@ -36,11 +37,20 @@ namespace Firestarter { namespace Managers {
 class PlatformMgr {
 friend class Core::Engine;
 
+public:
+    int getCPUCores();
+
 protected:
     PlatformMgr();
     ~PlatformMgr();
 
-    int getCPUCores();
+private:
+    // platform-specific functions:
+    int pf_getCPUCores();
+
+    boost::mutex *p_lock;
+
+    int p_cpuCores;
 };
 
 }} // Firestarter::Managers

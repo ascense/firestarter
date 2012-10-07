@@ -19,15 +19,25 @@
 
 #include "managers/EnvironmentMgr.hpp"
 
+#include "Firestarter.hpp"
+
 
 namespace Firestarter { namespace Managers {
 
-EnvironmentMgr::EnvironmentMgr() {}
+EnvironmentMgr::EnvironmentMgr() {
+    p_lock = new boost::mutex();
+}
 
 
-EnvironmentMgr::~EnvironmentMgr() {}
+EnvironmentMgr::~EnvironmentMgr() {
+    delete p_lock;
+}
 
 
 void EnvironmentMgr::addVariable() {}
+void EnvironmentMgr::delVariable() {}
+
+void EnvironmentMgr::setValue() {}
+void EnvironmentMgr::getValue() {}
 
 }} // Firestarter::Managers

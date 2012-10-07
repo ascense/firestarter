@@ -17,15 +17,27 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __FIRESTARTER_PRECOMPILE_HPP_
-#define __FIRESTARTER_PRECOMPILE_HPP_
+#ifndef __MANAGERS_TASK_HPP_
+#define __MANAGERS_TASK_HPP_
 
-// Global FW-Decls
-namespace Firestarter {
-namespace Core { class Engine; }
-}
+#include "Shared.hpp"
+#include "systems/AbstractSystem.hpp"
 
-// Engine Includes
-#include "lib/Lib.hpp"
 
-#endif // __FIRESTARTER_PRECOMPILE_HPP_
+namespace Firestarter { namespace Managers {
+
+/* Manager for Adding, Scheduling and Checking System Tasks */
+
+struct Task {
+    Task(Systems::AbstractSystem *sys, Scene::Scene *scene);
+    ~Task();
+
+    Systems::AbstractSystem *system;
+    Scene::Scene *scene;
+
+    Task *next;
+};
+
+}} // Firestarter::Managers
+
+#endif // __MANAGERS_TASKMGR_HPP_

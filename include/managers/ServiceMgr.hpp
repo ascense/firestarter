@@ -23,7 +23,6 @@
 #include <string>
 #include <vector>
 
-#include "lib/Lib.hpp"
 #include "systems/AbstractSystem.hpp"
 #include "systems/AbstractISystem.hpp"
 
@@ -40,6 +39,17 @@ namespace Firestarter { namespace Managers {
 class ServiceMgr {
 friend class Core::Engine;
 
+struct LookupEntry {
+    LookupEntry(const std::string *name, int sys);
+    ~LookupEntry();
+
+    const std::string *name;
+    int sys;
+
+    LookupEntry *next;
+};
+
+
 public:
     Systems::AbstractISystem* getSystemInterface(const std::string *name);
 
@@ -51,11 +61,16 @@ protected:
 
     void registerSystem(Systems::AbstractSystem *sys);
 
+    Systems::AbstractSystem* getSystem(int sysid);
     int getSystemID(const std::string *name); // use lookup
 
 private:
+    unsigned int calculateHash(const std::string *str);
+
+    const int p_lookupSize;
+
     std::vector<Systems::AbstractSystem*> p_systems;
-    // TODO: Lookup-table(sys_name) -> sys_id
+    LookupEntry **p_lookup;
 };
 
 }} // Firestarter::Managers

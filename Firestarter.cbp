@@ -15,7 +15,6 @@
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
-					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 			</Target>
@@ -28,7 +27,6 @@
 				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++0x" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -43,7 +41,6 @@
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
-					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
@@ -51,6 +48,10 @@
 					<Add library="mingw32" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
+					<Add library="boost_thread-mgw47-mt-d-1_51" />
+					<Add library="boost_chrono-mgw47-mt-d-1_51" />
+					<Add library="boost_system-mgw47-mt-d-1_51" />
+					<Add library="pthread" />
 				</Linker>
 			</Target>
 			<Target title="Debug Engine Unix">
@@ -69,6 +70,10 @@
 					<Add library="firestarter_dbg" />
 					<Add library="GL" />
 					<Add library="GLEW" />
+					<Add library="boost_thread" />
+					<Add library="boost_chrono" />
+					<Add library="boost_system" />
+					<Add library="pthread" />
 				</Linker>
 			</Target>
 			<Target title="Release Engine Win">
@@ -81,7 +86,6 @@
 				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c++0x" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -89,6 +93,9 @@
 					<Add library="mingw32" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
+					<Add library="boost_system-mgw47-mt-1_51" />
+					<Add library="boost_thread-mgw47-mt-1_51" />
+					<Add library="boost_chrono-mgw47-mt-1_51" />
 				</Linker>
 			</Target>
 			<Target title="Release Engine Unix">
@@ -108,6 +115,10 @@
 					<Add library="firestarter" />
 					<Add library="GL" />
 					<Add library="GLEW" />
+					<Add library="boost_thread" />
+					<Add library="boost_chrono" />
+					<Add library="boost_system" />
+					<Add library="pthread" />
 				</Linker>
 			</Target>
 			<Target title="Test Library Win">
@@ -120,7 +131,6 @@
 				<Option projectCompilerOptionsRelation="1" />
 				<Option projectLinkerOptionsRelation="1" />
 				<Compiler>
-					<Add option="-std=c++0x" />
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
@@ -155,6 +165,7 @@
 			<Add option="-std=c++0x" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-pthread" />
 			<Add directory="src" />
 			<Add directory="include" />
 		</Compiler>
@@ -163,7 +174,13 @@
 			<Add library="SDL" />
 			<Add directory="bin" />
 		</Linker>
-		<Unit filename="include/Precompile.hpp">
+		<Unit filename="include/Firestarter.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="include/Shared.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
@@ -248,7 +265,19 @@
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
+		<Unit filename="include/managers/Task.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
 		<Unit filename="include/managers/TaskMgr.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="include/managers/Worker.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
@@ -368,6 +397,12 @@
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
+		<Unit filename="src/managers/PlatformMgr.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
 		<Unit filename="src/managers/PlatformMgrLinux.cpp">
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Unix" />
@@ -388,7 +423,19 @@
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
+		<Unit filename="src/managers/Task.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
 		<Unit filename="src/managers/TaskMgr.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="src/managers/Worker.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />

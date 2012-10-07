@@ -17,36 +17,11 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_ENVIRONMENTMGR_HPP_
-#define __MANAGERS_ENVIRONMENTMGR_HPP_
-
-#include <boost/thread/mutex.hpp>
+#ifndef __FIRESTARTER_FIRESTARTER_HPP_
+#define __FIRESTARTER_FIRESTARTER_HPP_
 
 #include "Shared.hpp"
 
+#include "core/Engine.hpp"
 
-namespace Firestarter { namespace Managers {
-
-/* Manager for Engine Variables */
-
-class EnvironmentMgr {
-friend class Core::Engine;
-
-public:
-    void addVariable();
-    void delVariable();
-
-    void setValue();
-    void getValue();
-
-protected:
-    EnvironmentMgr();
-    ~EnvironmentMgr();
-
-private:
-    boost::mutex *p_lock;
-};
-
-}} // Firestarter::Managers
-
-#endif // __MANAGERS_ENVIRONMENTMGR_HPP_
+#endif // __FIRESTARTER_FIRESTARTER_HPP_

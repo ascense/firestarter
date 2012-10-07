@@ -20,8 +20,9 @@
 #ifndef __MANAGERS_STATEMGR_HPP_
 #define __MANAGERS_STATEMGR_HPP_
 
-#include "Precompile.hpp"
+#include <boost/thread/mutex.hpp>
 
+#include "Shared.hpp"
 
 
 namespace Firestarter { namespace Core {
@@ -36,14 +37,18 @@ namespace Firestarter { namespace Managers {
 class StateMgr {
 friend class Core::Engine;
 
+public:
+    bool getRunning();
+
+    void stop();
+
 protected:
     StateMgr();
     ~StateMgr();
 
-    bool getRunning();
-    void stop();
-
 private:
+    boost::mutex *p_lock;
+
     bool running;
 };
 

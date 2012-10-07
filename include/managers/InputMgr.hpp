@@ -21,8 +21,9 @@
 #define __MANAGERS_INPUTMGR_HPP_
 
 #include <SDL/SDL.h>
+#include <boost/thread/mutex.hpp>
 
-#include "Precompile.hpp"
+#include "Shared.hpp"
 #include "lib/Lib.hpp"
 
 
@@ -33,15 +34,12 @@ namespace Firestarter { namespace Managers {
 class InputMgr {
 friend class Core::Engine;
 
-protected:
-    InputMgr();
-    ~InputMgr();
-
+public:
     // Keyboard
-    void setKeyDown(const SDLKey *key);
-    void setKeyUp(const SDLKey *key);
+    void setKeyDown(SDLKey key);
+    void setKeyUp(SDLKey key);
 
-    bool isKeyDown(const SDLKey *key);
+    bool isKeyDown(SDLKey key);
 
     void clearKeys();
 
@@ -55,10 +53,16 @@ protected:
     Lib::Vec2D* getMousePosition();
     Lib::Vec2D* getMouseMovement();
 
+protected:
+    InputMgr();
+    ~InputMgr();
+
 private:
-    void assertKeyInRange(const SDLKey *key);
+    void assertKeyInRange(SDLKey key);
 
     void updateMouseScaling();
+
+    boost::mutex *p_lock;
 
     bool p_keyDown[SDLK_LAST];
     Lib::Vec2D p_mousePos; // Mouse coords from last update

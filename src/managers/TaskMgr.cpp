@@ -19,36 +19,40 @@
 
 #include "managers/TaskMgr.hpp"
 
+#include "Firestarter.hpp"
+
 
 namespace Firestarter { namespace Managers {
 
-// CLASS: Task //
-
-Task::Task(Systems::AbstractSystem *sys, Scene::Scene *scene)
-         : system(sys), scene(scene), next(nullptr) {}
-
-
-Task::~Task() {}
-
-
-// CLASS: TaskMgr //
-
 TaskMgr::TaskMgr() :
-        p_taskQueue(nullptr), p_taskQueueTail(nullptr), p_taskSchedule(nullptr), p_taskResults(nullptr) {}
+        p_taskQueue(nullptr), p_taskQueueTail(nullptr), p_taskSchedule(nullptr), p_taskResults(nullptr), p_threadPool(nullptr) {
+    p_lock = new boost::mutex();
+}
 
 
 TaskMgr::~TaskMgr() {
-    Task *task;
-    while (p_taskQueue != nullptr) {
-        task = p_taskQueue;
-        p_taskQueue = task->next;
+    delete p_taskQueue;
+    delete p_taskSchedule;
 
-        delete task;
-    }
+    delete [] p_threadPool;
+
+    delete p_lock;
+}
+
+
+void TaskMgr::init() {
+    p_threadCount = Core::Engine::getPlatformMgr()->getCPUCores() - 1;
+    if (p_threadCount < 2)
+        p_threadCount = 2;
+
+    p_threadPool = new Worker[p_threadCount];
+    for (int i = 0; i < p_threadCount; ++i)
+        p_threadPool[i].start();
 }
 
 
 void TaskMgr::addTask(Task *task) {
+    p_lock->lock();
     if (p_taskQueue == nullptr) {
         p_taskQueue = task;
         p_taskQueueTail = task;
@@ -56,12 +60,59 @@ void TaskMgr::addTask(Task *task) {
         p_taskQueueTail->next = task;
         p_taskQueueTail = task;
     }
+    p_lock->unlock();
+}
+
+
+void TaskMgr::schedule() {
+    // Assign tasks to the threads in the thread pool
+
+    Task *nextTask = p_taskQueue;
+    int i = 0;
+
+    while (nextTask != nullptr) {
+        p_lock->lock();
+        p_taskQueue = nextTask;
+        nextTask = p_taskQueue->next;
+        p_lock->unlock();
+
+        // Due to the limitations of SDL, rendering has to (always) be done in this thread
+        if (strcmp(p_taskQueue->system->getName()->c_str(), "renderer") != 0) {
+            p_threadPool[i % p_threadCount].addTask(p_taskQueue);
+            ++i;
+        } else {
+            p_taskQueue->next = p_taskSchedule;
+            p_taskSchedule = p_taskQueue;
+        }
+    }
+
+    p_lock->lock();
+    p_taskQueue = nullptr;
+    p_lock->unlock();
 }
 
 
 void TaskMgr::run() {
-    // Assign tasks to the threads in the thread pool
-    // Due to the limitations of SDL, rendering has to (always) be done in this thread
+    // Wake up the worker-threads, in order to process a new frame
+    for (int i = 0; i < p_threadCount; ++i)
+        p_threadPool[i].notify();
+
+    Task *tmpTask;
+
+    // Run tasks reserved for this thread
+    while (p_taskSchedule != nullptr) {
+        p_taskSchedule->system->tick(0, p_taskSchedule->scene);
+
+        p_lock->lock();
+        tmpTask = p_taskResults;
+        p_taskResults = p_taskSchedule;
+        p_taskSchedule = p_taskSchedule->next;
+        p_taskResults->next = tmpTask;
+        p_lock->unlock();
+    }
+
+    delete p_taskResults;
+    p_taskResults = nullptr;
 }
 
 }} // Firestarter::Managers

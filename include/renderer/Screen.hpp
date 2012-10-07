@@ -36,15 +36,16 @@ public:
 
     void draw();
 
-protected:
-    void setGLBuffer(int col_bits, int depth_bits);
     bool setVideoMode(int width, int height, int bpp, bool fullscreen);
-    void setProjection(int fov, double near, double far);
-    void setShading();
 
     void setMouseGrab(bool grabbed);
     void setVSync(bool vsync);
     void setFov(int fov);
+
+protected:
+    void setGLBuffer(int col_bits, int depth_bits);
+    void setProjection(int fov, double near, double far);
+    void setShading();
 
     void checkGLErr();
 

@@ -19,14 +19,20 @@
 
 #include "managers/StateMgr.hpp"
 
+#include "Firestarter.hpp"
+
 
 namespace Firestarter { namespace Managers {
 
 StateMgr::StateMgr() :
-        running(true) {}
+        running(true) {
+    p_lock = new boost::mutex();
+}
 
 
-StateMgr::~StateMgr() {}
+StateMgr::~StateMgr() {
+    delete p_lock;
+}
 
 
 bool StateMgr::getRunning() {
@@ -35,7 +41,9 @@ bool StateMgr::getRunning() {
 
 
 void StateMgr::stop() {
+    p_lock->lock();
     running = false;
+    p_lock->unlock();
 }
 
 }} // Firestarter::Managers

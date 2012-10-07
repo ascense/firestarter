@@ -19,8 +19,7 @@
 
 #include <iostream>
 
-#include "Precompile.hpp"
-#include "core/Engine.hpp"
+#include "Firestarter.hpp"
 
 
 int main(int argc, char *argv[]) {

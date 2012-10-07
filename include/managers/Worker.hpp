@@ -17,54 +17,49 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_TASKMGR_HPP_
-#define __MANAGERS_TASKMGR_HPP_
+#ifndef __MANAGERS_WORKER_HPP_
+#define __MANAGERS_WORKER_HPP_
 
+#define BOOST_THREAD_USE_LIB
+#include <boost/thread/thread.hpp>
 #include <boost/thread/mutex.hpp>
+#include <boost/thread/condition.hpp>
 
 #include "Shared.hpp"
 #include "systems/AbstractSystem.hpp"
 
 #include "Task.hpp"
-#include "Worker.hpp"
-
-
-namespace Firestarter { namespace Core {
-    class Engine; // Forward Declaration of Friend Class
-}}
 
 
 namespace Firestarter { namespace Managers {
 
-/* Manager for Adding, Scheduling and Checking System Tasks */
+/* Class for handling of worker threads for task execution */
 
-class TaskMgr {
-friend class Core::Engine;
-
+class Worker : private boost::noncopyable {
 public:
-    void addTask(Task *task);
+    Worker();
+    ~Worker();
 
-protected:
-    TaskMgr();
-    ~TaskMgr();
+    void start();
+    void stop();
 
-    void init();
-
-    void checkTask();
-
-    void schedule();
     void run();
 
-private:
-    boost::mutex *p_lock;
+    void addTask(Task *task);
+    void checkTask();
 
-    Task *p_taskQueue;
-    Task *p_taskQueueTail;
+    void notify();
+
+private:
+    boost::mutex p_lock;
+    boost::condition p_cond;
+
+    boost::thread *p_thread;
+
+    bool p_running;
+
     Task *p_taskSchedule;
     Task *p_taskResults;
-
-    Worker *p_threadPool;
-    int p_threadCount;
 };
 
 }} // Firestarter::Managers

@@ -19,73 +19,93 @@
 
 #include "managers/InputMgr.hpp"
 
+#include "Shared.hpp"
+
 
 namespace Firestarter { namespace Managers {
 
 InputMgr::InputMgr()
          : p_mouseFactor(10), p_mouseYaw(0.22f), p_mousePitch(0.22f) {
+    p_lock = new boost::mutex();
+
     clearKeys();
     updateMouseScaling();
 }
 
 
-InputMgr::~InputMgr() {}
-
-
-void InputMgr::setKeyDown(const SDLKey *key) {
-    assertKeyInRange(key);
-
-    p_keyDown[*key] = true;
+InputMgr::~InputMgr() {
+    delete p_lock;
 }
 
 
-void InputMgr::setKeyUp(const SDLKey *key) {
+void InputMgr::setKeyDown(SDLKey key) {
     assertKeyInRange(key);
 
-    p_keyDown[*key] = false;
+    p_lock->lock();
+    p_keyDown[key] = true;
+    p_lock->unlock();
 }
 
 
-bool InputMgr::isKeyDown(const SDLKey *key) {
+void InputMgr::setKeyUp(SDLKey key) {
     assertKeyInRange(key);
 
-    return p_keyDown[*key];
+    p_lock->lock();
+    p_keyDown[key] = false;
+    p_lock->unlock();
+}
+
+
+bool InputMgr::isKeyDown(SDLKey key) {
+    assertKeyInRange(key);
+
+    return p_keyDown[key];
 }
 
 
 void InputMgr::clearKeys() {
+    p_lock->lock();
     for (int i = 0; i < SDLK_LAST; ++i)
         p_keyDown[i] = false;
+    p_lock->unlock();
 }
 
 
 void InputMgr::updateMouse(const SDL_MouseMotionEvent *event) {
+    p_lock->lock();
     p_mousePos.setX(event->x);
     p_mousePos.setY(event->y);
 
     p_mouseRel.setX(event->xrel * p_mouseScaling.getX());
     p_mouseRel.setY(event->yrel * p_mouseScaling.getY());
+    p_lock->unlock();
 }
 
 
 void InputMgr::setMouseSensitivity(float sens) {
+    p_lock->lock();
     p_mouseFactor = sens;
 
     updateMouseScaling();
+    p_lock->unlock();
 }
 
 
 void InputMgr::setMouseYawFactor(float m_yaw) {
+    p_lock->lock();
     p_mouseYaw = m_yaw;
 
     updateMouseScaling();
+    p_lock->unlock();
 }
 
 
 void InputMgr::setMousePitchFactor(float m_pitch) {
+    p_lock->lock();
     p_mousePitch = m_pitch;
 
     updateMouseScaling();
+    p_lock->unlock();
 }
 
 
@@ -99,8 +119,8 @@ Lib::Vec2D* InputMgr::getMouseMovement() {
 }
 
 
-void InputMgr::assertKeyInRange(const SDLKey *key) {
-    if (*key >= SDLK_LAST)
+void InputMgr::assertKeyInRange(SDLKey key) {
+    if (key >= SDLK_LAST)
         throw Lib::FirestarterException("Key ID out of range");
 }
 

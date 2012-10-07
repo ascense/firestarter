@@ -20,7 +20,7 @@
 #ifndef __SCENE_SCENE_HPP_
 #define __SCENE_SCENE_HPP_
 
-#include "Precompile.hpp"
+#include "Shared.hpp"
 
 #include "Object.hpp"
 #include "Area.hpp"

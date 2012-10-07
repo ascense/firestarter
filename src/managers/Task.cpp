@@ -17,56 +17,18 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_TASKMGR_HPP_
-#define __MANAGERS_TASKMGR_HPP_
-
-#include <boost/thread/mutex.hpp>
-
-#include "Shared.hpp"
-#include "systems/AbstractSystem.hpp"
-
-#include "Task.hpp"
-#include "Worker.hpp"
-
-
-namespace Firestarter { namespace Core {
-    class Engine; // Forward Declaration of Friend Class
-}}
+#include "managers/Task.hpp"
 
 
 namespace Firestarter { namespace Managers {
 
-/* Manager for Adding, Scheduling and Checking System Tasks */
+Task::Task(Systems::AbstractSystem *sys, Scene::Scene *scene)
+         : system(sys), scene(scene), next(nullptr) {}
 
-class TaskMgr {
-friend class Core::Engine;
 
-public:
-    void addTask(Task *task);
-
-protected:
-    TaskMgr();
-    ~TaskMgr();
-
-    void init();
-
-    void checkTask();
-
-    void schedule();
-    void run();
-
-private:
-    boost::mutex *p_lock;
-
-    Task *p_taskQueue;
-    Task *p_taskQueueTail;
-    Task *p_taskSchedule;
-    Task *p_taskResults;
-
-    Worker *p_threadPool;
-    int p_threadCount;
-};
+Task::~Task() {
+    if (this->next != nullptr)
+        delete this->next;
+}
 
 }} // Firestarter::Managers
-
-#endif // __MANAGERS_TASKMGR_HPP_

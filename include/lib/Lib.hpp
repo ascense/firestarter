@@ -21,11 +21,13 @@
 #define __LIB_LIB_HPP_
 
 // Type Definitions
-typedef unsigned char byte; // 8 bits
+typedef unsigned char byte;  // 8 bits
 typedef unsigned short word; // 16 bits
-typedef unsigned int dword; // 32 bits
-typedef unsigned int uint;
-typedef unsigned long ulong;
+typedef unsigned int dword;  // 32 bits
+
+
+// Type includes
+#include <cstdint>
 
 
 // Global Macros

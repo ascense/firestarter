@@ -17,30 +17,19 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "managers/PlatformMgr.hpp"
+#include "systems/DataUpdate.hpp"
 
-#include <windows.h>
-#include <stdio.h>
+#include "Firestarter.hpp"
 
 
-namespace Firestarter { namespace Managers {
+namespace Firestarter { namespace Systems {
 
-int PlatformMgr::pf_getCPUCores() {
-    SYSTEM_INFO sysinfo;
-    GetSystemInfo(&sysinfo);
-
-    return sysinfo.dwNumberOfProcessors;
+DataUpdate::DataUpdate(updateType type)
+        : type(type) {
+    time = Core::Engine::getPlatformMgr()->getCurrentTime();
 }
 
 
-// Note: on some chipsets, QPC may do occasional erroneus leaps of several seconds
-uint64_t PlatformMgr::pf_getCurrentTime() {
-    LARGE_INTEGER li_freq, li_time;
+DataUpdate::~DataUpdate() {}
 
-    QueryPerformanceFrequency(&li_freq);
-    QueryPerformanceCounter(&li_time);
-
-    return (uint64_t) li_time.QuadPart / ((uint64_t) li_freq.QuadPart / 1000LL);
-}
-
-}} // Firestarter::Managers
+}} // Firestarter::Systems

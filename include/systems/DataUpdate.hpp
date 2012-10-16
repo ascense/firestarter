@@ -20,12 +20,29 @@
 #ifndef __SYSTEMS_DATAUPDATE_HPP_
 #define __SYSTEMS_DATAUPDATE_HPP_
 
+#include "lib/Lib.hpp"
+
 
 namespace Firestarter { namespace Systems {
 
 /* Object Update Data, Used for Notifying Systems of a Change to an Object */
 
-struct DataUpdate {};
+enum updateType {
+    TYPE_CUMULATIVE_ORDERED, // Apply updates cumulatively, in temporal order
+    TYPE_CUMULATIVE_RANDOM,  // Apply updates cumulatively, in any order (allows for faster processing)
+    TYPE_DIRECT              // Use the value of the newest update as is, ignore older
+};
+
+struct DataUpdate {
+    DataUpdate(updateType type);
+    ~DataUpdate();
+
+    const updateType type;
+
+    uint64_t time;
+
+    // TODO: actual update data
+};
 
 }} // Firestarter::Systems
 

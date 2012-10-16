@@ -40,6 +40,9 @@ friend class Core::Engine;
 public:
     int getCPUCores();
 
+    uint64_t getCurrentTime(); // get time in milliseconds
+    uint64_t getCPUTicks(); // get time as CPU ticks since bootup
+
 protected:
     PlatformMgr();
     ~PlatformMgr();
@@ -47,6 +50,7 @@ protected:
 private:
     // platform-specific functions:
     int pf_getCPUCores();
+    uint64_t pf_getCurrentTime();
 
     boost::mutex *p_lock;
 

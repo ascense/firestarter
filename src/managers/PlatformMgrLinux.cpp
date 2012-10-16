@@ -20,12 +20,22 @@
 #include "managers/PlatformMgr.hpp"
 
 #include <unistd.h>
+#include <sys/time.h>
 
 
 namespace Firestarter { namespace Managers {
 
 int PlatformMgr::pf_getCPUCores() {
     return sysconf(_SC_NPROCESSORS_ONLN);
+}
+
+
+uint64_t PlatformMgr::pf_getCurrentTime() {
+    timespec ts;
+
+    clock_gettime(CLOCK_REALTIME, &ts);
+
+    return (uint64_t) ts.tv_sec * 1000LL + (uint64_t) ts.tv_nsec / 1000000LL;
 }
 
 }} // Firestarter::Managers

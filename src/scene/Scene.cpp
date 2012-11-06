@@ -22,32 +22,45 @@
 
 namespace Firestarter { namespace Scene {
 
-Scene::Scene()
-         : p_objs_head(nullptr), p_objs_tail(nullptr) {
-    p_octree = new Area();
+Scene::Scene() {
+    p_octree = new Area(128);
 }
 
 
 Scene::~Scene() {
-    Object *tmp;
-    while (p_objs_head != nullptr) {
-        tmp = p_objs_head;
-        p_objs_head = p_objs_head->next();
-        delete tmp;
+    while (!p_objs.empty()) {
+        delete p_objs.back();
+        p_objs.pop_back();
     }
+
+    delete p_octree;
 }
 
 
 void Scene::addObject(Object *obj) {
-    if (obj == nullptr) // TODO: Debug exception function, global define for debugs
+    if (obj == nullptr)
         throw Lib::FirestarterException("Null object added to scene");
 
-    if (p_objs_head == nullptr)
-        p_objs_head = obj;
-    else
-        p_objs_tail->setNext(obj);
+    if (obj->p_parent == this)
+        return;
 
-    p_objs_tail = obj;
+    obj->p_id = p_objs.size();
+    p_objs.push_back(obj);
+
+    p_octree->addObject(obj);
+}
+
+
+void Scene::removeObject(Object *obj) {
+    if (obj->p_id < 0)
+        throw Lib::FirestarterException("Requested removal of an object not in scene");
+
+    p_objs[obj->p_id] = p_objs.back();
+    p_objs[obj->p_id]->p_id = obj->p_id;
+    p_objs.pop_back();
+
+    // this might not be the right place for deletion
+    delete obj;
 }
 
 }} // Firestarter::Scene

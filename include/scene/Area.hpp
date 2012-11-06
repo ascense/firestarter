@@ -20,33 +20,43 @@
 #ifndef __SCENE_AREA_HPP_
 #define __SCENE_AREA_HPP_
 
-#include <string>
-
 #include "lib/Lib.hpp"
+
+#include "scene/Object.hpp"
 
 
 namespace Firestarter { namespace Scene {
 
-/* Very basic, non optimal quadtree implementation */
+/* Very basic, non optimal octree implementation */
+
+// FW-Decl.
+class Object;
+
 
 struct Area {
-    // TODO: Actually store scene information in the nodes
-
-    Area();
+    Area(int size);
     ~Area();
 
-    std::string name;
+    void split();
+    void merge();
+
+    void addObject(Object *obj);
+    void removeObject(Object *obj);
+
     int area_size;
     int area_x;
+    int area_y;
     int area_z;
 
-    int data;
+    Object *objects_head;
+    Object *objects_tail;
+    int objects_count;
 
     Area *parent;
     Area **children;
 
-    void split();
-    void merge();
+private:
+    Area();
 };
 
 }} // Firestarter::Scene

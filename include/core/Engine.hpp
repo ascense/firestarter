@@ -37,7 +37,7 @@ public:
 
     /* Singleton-like handling of manager access
     *  These are only for public access to the managers,
-    *+  the Engine-class owns all the actual instances.
+    *+ the Engine-class owns all the actual instances.
     *  Ugly, but functional...
     */
     static Managers::EnvironmentMgr* getEnvironmentMgr();

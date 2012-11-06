@@ -20,26 +20,39 @@
 #ifndef __SCENE_OBJECT_HPP_
 #define __SCENE_OBJECT_HPP_
 
+#include "lib/Lib.hpp"
+
 
 namespace Firestarter { namespace Scene {
 
 /* Universal Object, Defining the Relationship of a Scene Object */
 
-// FW-Decl. of Scene, to avoid circular referencing
+// FW-Decl.
 class Scene;
+class Area;
 
 
 class Object {
+friend Scene;
+friend Area;
+
 public:
+    // Note: Objects are added to scene during initialization
     Object(Scene *parent);
+    Object(Scene *parent, float x, float y, float z);
     ~Object();
 
     Object* next();
     void setNext(Object *obj);
 
 private:
-    Scene *parent;
-    Object *next_obj;
+    Scene *p_parent;
+    Area *p_area;
+
+    int p_id;
+    Lib::Vec3D p_pos;
+
+    Object *p_next_obj;
 };
 
 }} // Firestarter::Scene

@@ -19,23 +19,38 @@
 
 #include "scene/Object.hpp"
 
+#include "scene/Scene.hpp"
+
 
 namespace Firestarter { namespace Scene {
 
 Object::Object(Scene *parent) :
-        parent(parent), next_obj(nullptr) {}
+        p_area(nullptr), p_id(-1), p_pos(0, 0, 0), p_next_obj(nullptr) {
+    parent->addObject(this);
+    p_parent = parent;
+}
 
 
-Object::~Object() {}
+Object::Object(Scene *parent, float x, float y, float z) :
+        p_area(nullptr), p_id(-1), p_pos(x, y, z), p_next_obj(nullptr) {
+    parent->addObject(this);
+    p_parent = parent;
+}
+
+
+Object::~Object() {
+    if (p_area != nullptr)
+        p_area->removeObject(this);
+}
 
 
 Object* Object::next() {
-    return next_obj;
+    return p_next_obj;
 }
 
 
 void Object::setNext(Object *obj) {
-    next_obj = obj;
+    p_next_obj = obj;
 }
 
 }} // Firestarter::Scene

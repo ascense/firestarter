@@ -20,6 +20,8 @@
 #ifndef __SCENE_SCENE_HPP_
 #define __SCENE_SCENE_HPP_
 
+#include <vector>
+
 #include "Shared.hpp"
 
 #include "Object.hpp"
@@ -39,10 +41,11 @@ public:
     ~Scene();
 
     void addObject(Object *obj);
+    void removeObject(Object *obj);
 
 private:
-    Object *p_objs_head;
-    Object *p_objs_tail;
+    std::vector<Object*> p_objs;
+
     Area *p_octree;
 };
 

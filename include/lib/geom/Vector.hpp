@@ -30,12 +30,12 @@ namespace Firestarter { namespace Lib {
 class Vector {
 public:
     Vector(int dim);
-    Vector(Vector *vec);
+    Vector(const Vector *vec);
     ~Vector();
 
-    int getDimensions();
+    int getDimensions() const;
     void setValue(int dim, float val);
-    float getValue(int dim);
+    float getValue(int dim) const;
 
     void add(const Vector *vec);
     void subtract(const Vector *vec);

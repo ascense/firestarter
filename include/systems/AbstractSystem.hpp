@@ -46,7 +46,9 @@ public:
     //+ but not neccessarily initialized during System.init()
     virtual void init() = 0;
 
+    //  Process one tick (delta seconds) of the game world
     virtual void tick(double delta, const Scene::Scene* scene) = 0;
+    //  Recieve notification of data changes relevant to this subsystem
     virtual void notify(DataUpdate* upd) = 0;
 
     virtual const AbstractISystem* getInterface() = 0;

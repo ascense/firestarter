@@ -63,4 +63,12 @@ void Scene::removeObject(Object *obj) {
     delete obj;
 }
 
+
+const Object* Scene::getObject(int id) const {
+    if (id < 0 || id >= (int) p_objs.size())
+        return nullptr;
+
+    return p_objs[id];
+}
+
 }} // Firestarter::Scene

@@ -32,7 +32,7 @@ Vec3D::Vec3D(float x, float y, float z) : Lib::Vector(3) {
 }
 
 
-Vec3D::Vec3D(Vec3D *vec) : Lib::Vector(vec) {}
+Vec3D::Vec3D(const Vec3D *vec) : Lib::Vector(vec) {}
 
 
 Vec3D::~Vec3D() {}
@@ -53,17 +53,17 @@ void Vec3D::setZ(float z) {
 }
 
 
-float Vec3D::getX() {
+float Vec3D::getX() const {
     return this->getValue(1);
 }
 
 
-float Vec3D::getY() {
+float Vec3D::getY() const {
     return this->getValue(2);
 }
 
 
-float Vec3D::getZ() {
+float Vec3D::getZ() const {
     return this->getValue(3);
 }
 

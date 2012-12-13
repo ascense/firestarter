@@ -45,7 +45,7 @@ void System::init() {
 
 
 void System::tick(double delta, const Scene::Scene* scene) {
-    p_screen->draw();
+    p_screen->draw(scene);
 }
 
 

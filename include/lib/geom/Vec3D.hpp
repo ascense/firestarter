@@ -31,16 +31,16 @@ class Vec3D : public Lib::Vector {
 public:
     Vec3D();
     Vec3D(float x, float y, float z);
-    Vec3D(Vec3D *vec);
+    Vec3D(const Vec3D *vec);
     ~Vec3D();
 
     void setX(float x);
     void setY(float y);
     void setZ(float z);
 
-    float getX();
-    float getY();
-    float getZ();
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 };
 
 }} // Firestarter::Lib

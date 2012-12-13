@@ -45,6 +45,8 @@ public:
     Object* next();
     void setNext(Object *obj);
 
+    const Lib::Vec3D* getPosition() const;
+
 private:
     Scene *p_parent;
     Area *p_area;

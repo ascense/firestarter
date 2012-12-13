@@ -25,6 +25,7 @@
 #include <SDL/SDL.h>
 
 #include "lib/Lib.hpp"
+#include "scene/Scene.hpp"
 
 
 namespace Firestarter { namespace Renderer {
@@ -34,7 +35,7 @@ public:
     Screen(int width, int height, bool fullscreen) throw (Lib::FirestarterException);
     ~Screen();
 
-    void draw();
+    void draw(const Scene::Scene* scene);
 
     bool setVideoMode(int width, int height, int bpp, bool fullscreen);
 

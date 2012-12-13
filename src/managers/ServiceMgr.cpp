@@ -70,7 +70,7 @@ void ServiceMgr::registerSystem(Systems::AbstractSystem *sys) {
 
 
 Systems::AbstractSystem* ServiceMgr::getSystem(int sysid) {
-    if (sysid < 0 || sysid >= p_systems.size())
+    if (sysid < 0 || sysid >= (int) p_systems.size())
         return nullptr;
 
     return p_systems.at(sysid);

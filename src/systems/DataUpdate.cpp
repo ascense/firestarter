@@ -17,12 +17,12 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "systems/DataUpdate.hpp"
+#include "managers/DataUpdate.hpp"
 
 #include "Firestarter.hpp"
 
 
-namespace Firestarter { namespace Systems {
+namespace Firestarter { namespace Managers {
 
 DataUpdate::DataUpdate(updateType type)
         : type(type) {
@@ -32,4 +32,4 @@ DataUpdate::DataUpdate(updateType type)
 
 DataUpdate::~DataUpdate() {}
 
-}} // Firestarter::Systems
+}} // Firestarter::Managers

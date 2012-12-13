@@ -26,6 +26,7 @@
 
 #include "Object.hpp"
 #include "Area.hpp"
+#include "systems/DataUpdate.hpp"
 
 
 namespace Firestarter { namespace Scene {
@@ -40,8 +41,20 @@ public:
     Scene();
     ~Scene();
 
+    //  Add an object to the scene.
+    //  The 0'th object is considered the "camera" for the scene
     void addObject(Object *obj);
+
+    //  Completely remove any references to object from this scene,
+    //+ and free the object from memory.
     void removeObject(Object *obj);
+
+    //  Get an object pointer to an object, based on it's scene-specific internal id
+    //  Returns nullptr in case of an invalid id.
+    const Object* getObject(int id) const;
+
+    //  Register a change to the data
+    void dataUpdate(Systems::DataUpdate* update);
 
 private:
     std::vector<Object*> p_objs;

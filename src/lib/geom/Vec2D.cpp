@@ -47,12 +47,12 @@ void Vec2D::setY(float y) {
 }
 
 
-float Vec2D::getX() {
+float Vec2D::getX() const {
     return this->getValue(1);
 }
 
 
-float Vec2D::getY() {
+float Vec2D::getY() const {
     return this->getValue(2);
 }
 

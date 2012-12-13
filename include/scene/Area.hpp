@@ -34,6 +34,9 @@ class Object;
 
 
 struct Area {
+    // TODO: Keep track of depth
+    // TODO: Max depth
+
     Area(int size);
     ~Area();
 
@@ -57,6 +60,12 @@ struct Area {
 
 private:
     Area();
+
+    void addToChild(Object *obj);
+
+    // object count limits for splitting/merging nodes
+    static const int P_SPLIT_AT = 8;
+    static const int P_MERGE_AT = 2;
 };
 
 }} // Firestarter::Scene

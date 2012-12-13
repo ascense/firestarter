@@ -53,4 +53,9 @@ void Object::setNext(Object *obj) {
     p_next_obj = obj;
 }
 
+
+const Lib::Vec3D* Object::getPosition() const {
+    return (const Lib::Vec3D*) &p_pos;
+}
+
 }} // Firestarter::Scene

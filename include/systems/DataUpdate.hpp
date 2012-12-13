@@ -17,8 +17,8 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __SYSTEMS_DATAUPDATE_HPP_
-#define __SYSTEMS_DATAUPDATE_HPP_
+#ifndef __MANAGERS_DATAUPDATE_HPP_
+#define __MANAGERS_DATAUPDATE_HPP_
 
 #include "lib/Lib.hpp"
 
@@ -33,11 +33,17 @@ enum updateType {
     TYPE_DIRECT              // Use the value of the newest update as is, ignore older
 };
 
+enum updateContent {
+    CONTENT_POSITION, // Update concerns positional data
+
+};
+
 struct DataUpdate {
     DataUpdate(updateType type);
     ~DataUpdate();
 
     const updateType type;
+    const updateContent content;
 
     uint64_t time;
 
@@ -47,6 +53,6 @@ struct DataUpdate {
 }} // Firestarter::Systems
 
 
-#endif // __SYSTEMS_DATAUPDATE_HPP_
+#endif // __MANAGERS_DATAUPDATE_HPP_
 
 

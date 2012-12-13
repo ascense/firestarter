@@ -32,7 +32,7 @@ class AABB {
 public:
     AABB(int dim);
 
-    int getDimensions();
+    int getDimensions() const;
 
     void setMinCoords(Vector *vec);
     void setMaxCoords(Vector *vec);

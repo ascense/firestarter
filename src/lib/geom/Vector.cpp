@@ -31,7 +31,7 @@ Vector::Vector(int dim)
 }
 
 
-Vector::Vector(Vector *vec)
+Vector::Vector(const Vector *vec)
          : m_dimensions(vec->getDimensions()) {
     m_values = new float[m_dimensions];
 
@@ -45,7 +45,7 @@ Vector::~Vector() {
 }
 
 
-int Vector::getDimensions() {
+int Vector::getDimensions() const {
     return m_dimensions;
 }
 
@@ -57,7 +57,7 @@ void Vector::setValue(int dim, float val) {
 }
 
 
-float Vector::getValue(int dim) {
+float Vector::getValue(int dim) const {
     assertIDInRange(this, dim);
 
     return m_values[dim - 1];

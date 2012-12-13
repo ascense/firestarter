@@ -49,24 +49,29 @@ Screen::~Screen() {
 }
 
 
-void Screen::draw() {
-    //Lib::Vec3D* cam;
+void Screen::draw(const Scene::Scene* scene) {
+    Lib::Vec3D *cam_pos;
+
+    // 0'th object in scene considered the camera
+    if (scene->getObject(0) == nullptr) {
+        cam_pos = new Lib::Vec3D(0, 0, 0);
+    } else {
+        cam_pos = new Lib::Vec3D(scene->getObject(0)->getPosition());
+    }
 
     glClear(GL_COLOR_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
     /**
-    cam = game->get_camera_angle();
-    glRotatef(cam->x, 1.0f, 0.0f, 0.0f);
-    glRotatef(cam->y, 0.0f, 1.0f, 0.0f);
-    glRotatef(cam->z, 0.0f, 0.0f, 1.0f);
-
-    draw_sky();
-
-    cam = game->get_camera_position();
-    glTranslatef(-cam->x, -cam->y - 0.9, -cam->z);
-
-    draw_world();
+    glRotatef(cam_rot->getX(), 1.0f, 0.0f, 0.0f);
+    glRotatef(cam_rot->getY(), 0.0f, 1.0f, 0.0f);
+    glRotatef(cam_rot->getZ(), 0.0f, 0.0f, 1.0f);
     **/
+
+    // draw_sky();
+
+    glTranslatef(-cam_pos->getX(), -cam_pos->getX() - 0.9, -cam_pos->getX());
+
+    // draw_world();
 
     glLoadIdentity();
 
@@ -75,6 +80,8 @@ void Screen::draw() {
     // draw_ui();
 
     SDL_GL_SwapBuffers();
+
+    delete cam_pos;
 }
 
 

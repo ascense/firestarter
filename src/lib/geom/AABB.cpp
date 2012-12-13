@@ -52,7 +52,7 @@ AABB::~AABB() {
 }
 
 
-int AABB::getDimensions() {
+int AABB::getDimensions() const {
     return m_dimensions;
 }
 

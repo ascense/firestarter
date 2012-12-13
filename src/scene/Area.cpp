@@ -20,7 +20,6 @@
 #include "scene/Area.hpp"
 
 #include "scene/Scene.hpp"
-#include <cstdio>
 
 
 namespace Firestarter { namespace Scene {
@@ -74,22 +73,12 @@ void Area::split() {
 			this->children[i]->area_y += this->children[i]->area_size;
     }
 
-    int id;
     Object *tmp_obj = objects_head;
-
     while (objects_head != nullptr) {
         tmp_obj = objects_head;
         objects_head = tmp_obj->next();
 
-        id = 0;
-        if (tmp_obj->p_pos.getX() >= area_x + (area_size / 2))
-            id += 1;
-        if (tmp_obj->p_pos.getZ() >= area_z + (area_size / 2))
-            id += 2;
-        if (tmp_obj->p_pos.getY() >= area_y + (area_size / 2))
-            id += 4;
-
-        this->children[id]->addObject(tmp_obj);
+        addToChild(tmp_obj);
     }
 
     objects_count = 0;
@@ -134,8 +123,10 @@ void Area::merge() {
 
 
 void Area::addObject(Object *obj) {
-    if (objects_count >= 8)
-        throw Lib::FirestarterException("Cannot add object to area, too many objects");
+    if (children != nullptr) {
+        addToChild(obj);
+        return;
+    }
 
     if (objects_tail != nullptr)
         objects_tail->setNext(obj);
@@ -146,7 +137,8 @@ void Area::addObject(Object *obj) {
     obj->p_area = this;
     obj->setNext(nullptr);
 
-    ++objects_count;
+    if (++objects_count > P_SPLIT_AT)
+        split();
 }
 
 
@@ -176,7 +168,22 @@ void Area::removeObject(Object *obj) {
     obj->p_area = nullptr;
     obj->setNext(nullptr);
 
-    --objects_count;
+    if (--objects_count <= P_MERGE_AT)
+        merge();
+}
+
+
+void Area::addToChild(Object *obj) {
+    int id = 0;
+
+    if (obj->p_pos.getX() >= area_x + (area_size / 2))
+        id += 1;
+    if (obj->p_pos.getZ() >= area_z + (area_size / 2))
+        id += 2;
+    if (obj->p_pos.getY() >= area_y + (area_size / 2))
+        id += 4;
+
+    this->children[id]->addObject(obj);
 }
 
 }} // Firestarter::Scene

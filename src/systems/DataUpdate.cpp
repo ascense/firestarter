@@ -17,19 +17,19 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "managers/DataUpdate.hpp"
+#include "systems/DataUpdate.hpp"
 
 #include "Firestarter.hpp"
 
 
-namespace Firestarter { namespace Managers {
+namespace Firestarter { namespace Systems {
 
-DataUpdate::DataUpdate(updateType type)
-        : type(type) {
+DataUpdate::DataUpdate(updateType type, updateContent content)
+        : type(type), content(content) {
     time = Core::Engine::getPlatformMgr()->getCurrentTime();
 }
 
 
 DataUpdate::~DataUpdate() {}
 
-}} // Firestarter::Managers
+}} // Firestarter::Systems

@@ -39,7 +39,7 @@ enum updateContent {
 };
 
 struct DataUpdate {
-    DataUpdate(updateType type);
+    DataUpdate(updateType type, updateContent content);
     ~DataUpdate();
 
     const updateType type;

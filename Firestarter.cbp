@@ -48,9 +48,9 @@
 					<Add library="mingw32" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
-					<Add library="boost_thread-mgw47-mt-d-1_51" />
-					<Add library="boost_chrono-mgw47-mt-d-1_51" />
-					<Add library="boost_system-mgw47-mt-d-1_51" />
+					<Add library="boost_thread-mgw47-mt-d-1_52" />
+					<Add library="boost_chrono-mgw47-mt-d-1_52" />
+					<Add library="boost_system-mgw47-mt-d-1_52" />
 					<Add library="pthread" />
 				</Linker>
 			</Target>
@@ -93,9 +93,9 @@
 					<Add library="mingw32" />
 					<Add library="opengl32" />
 					<Add library="glew32" />
-					<Add library="boost_system-mgw47-mt-1_51" />
-					<Add library="boost_thread-mgw47-mt-1_51" />
-					<Add library="boost_chrono-mgw47-mt-1_51" />
+					<Add library="boost_system-mgw47-mt-1_52" />
+					<Add library="boost_thread-mgw47-mt-1_52" />
+					<Add library="boost_chrono-mgw47-mt-1_52" />
 				</Linker>
 			</Target>
 			<Target title="Release Engine Unix">
@@ -128,13 +128,13 @@
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option projectCompilerOptionsRelation="1" />
-				<Option projectLinkerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="firestarter_dbg.dll" />
+					<Add library="firestarter_dbg" />
+					<Add library="mingw32" />
 					<Add library="unittest++" />
 				</Linker>
 			</Target>
@@ -319,6 +319,30 @@
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
+		<Unit filename="include\script\ISystem.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="include\script\PythonEmbed.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="include\script\PythonInterface.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="include\script\System.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
 		<Unit filename="include\systems\AbstractISystem.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
@@ -326,6 +350,12 @@
 			<Option target="Release Engine Unix" />
 		</Unit>
 		<Unit filename="include\systems\AbstractSystem.hpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="include\systems\DataUpdate.hpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />
@@ -471,6 +501,30 @@
 			<Option target="Release Engine Win" />
 			<Option target="Release Engine Unix" />
 		</Unit>
+		<Unit filename="src\script\ISystem.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="src\script\PythonEmbed.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="src\script\PythonInterface.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="src\script\System.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
 		<Unit filename="src\systems\AbstractISystem.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
@@ -478,6 +532,12 @@
 			<Option target="Release Engine Unix" />
 		</Unit>
 		<Unit filename="src\systems\AbstractSystem.cpp">
+			<Option target="Debug Engine Win" />
+			<Option target="Debug Engine Unix" />
+			<Option target="Release Engine Win" />
+			<Option target="Release Engine Unix" />
+		</Unit>
+		<Unit filename="src\systems\DataUpdate.cpp">
 			<Option target="Debug Engine Win" />
 			<Option target="Debug Engine Unix" />
 			<Option target="Release Engine Win" />

@@ -17,27 +17,32 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "renderer/ISystem.hpp"
-
-#include "renderer/System.hpp"
+#include "script/System.hpp"
 
 
-namespace Firestarter { namespace Renderer {
+namespace Firestarter { namespace Script {
 
-ISystem::ISystem(System *sys) :
-        Systems::AbstractISystem(sys) {}
-
-
-ISystem::~ISystem() {}
-
-
-void ISystem::tick(double delta, const Scene::Scene* scene) {
-    this->getSystem()->tick(delta, scene);
+System::System() : Systems::AbstractSystem(new std::string("script")) {
+    p_iface = new ISystem(this);
 }
 
 
-void ISystem::notify(Systems::DataUpdate* upd) {
-    this->getSystem()->notify(upd);
+System::~System() {
+    delete p_iface;
 }
 
-}} // Firestarter::Renderer
+
+void System::init() {}
+
+
+void System::tick(double delta, const Scene::Scene* scene) {}
+
+
+void System::notify(Systems::DataUpdate* upd) {}
+
+
+const ISystem* System::getInterface() {
+    return p_iface;
+}
+
+}} // Firestarter::Script

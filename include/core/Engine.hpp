@@ -40,12 +40,12 @@ public:
     *+ the Engine-class owns all the actual instances.
     *  Ugly, but functional...
     */
-    static Managers::EnvironmentMgr* getEnvironmentMgr();
-    static Managers::InputMgr* getInputMgr();
-    static Managers::PlatformMgr* getPlatformMgr();
-    static Managers::ServiceMgr* getServiceMgr();
-    static Managers::StateMgr* getStateMgr();
-    static Managers::TaskMgr* getTaskMgr();
+    static Managers::EnvironmentMgr *const getEnvironmentMgr();
+    static Managers::InputMgr *const getInputMgr();
+    static Managers::PlatformMgr *const getPlatformMgr();
+    static Managers::ServiceMgr *const getServiceMgr();
+    static Managers::StateMgr *const getStateMgr();
+    static Managers::TaskMgr *const getTaskMgr();
 
 private:
     void init();

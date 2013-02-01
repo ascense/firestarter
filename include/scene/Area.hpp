@@ -27,16 +27,13 @@
 
 namespace Firestarter { namespace Scene {
 
-/* Very basic, non optimal octree implementation */
+/* Very basic octree implementation */
 
 // FW-Decl.
 class Object;
 
 
 struct Area {
-    // TODO: Keep track of depth
-    // TODO: Max depth
-
     Area(int size);
     ~Area();
 
@@ -63,9 +60,12 @@ private:
 
     void addToChild(Object *obj);
 
+    int p_depth;
+
     // object count limits for splitting/merging nodes
     static const int P_SPLIT_AT = 8;
     static const int P_MERGE_AT = 2;
+    static const int P_MAX_DEPTH = 8;
 };
 
 }} // Firestarter::Scene

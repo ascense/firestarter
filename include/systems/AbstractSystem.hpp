@@ -55,7 +55,7 @@ public:
 
     const std::string* getName();
 
-protected:
+private:
     const std::string* p_name;
 };
 

@@ -26,8 +26,16 @@ AbstractISystem::AbstractISystem(AbstractSystem* sys)
         : p_system(sys) {}
 
 
+AbstractISystem::~AbstractISystem() {}
+
+
 const std::string* AbstractISystem::getSystemName() {
     return p_system->p_name;
+}
+
+
+AbstractSystem* AbstractISystem::getSystem() {
+    return p_system;
 }
 
 }} // Firestarter::Systems

@@ -17,8 +17,8 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __MANAGERS_DATAUPDATE_HPP_
-#define __MANAGERS_DATAUPDATE_HPP_
+#ifndef __SYSTEMS_DATAUPDATE_HPP_
+#define __SYSTEMS_DATAUPDATE_HPP_
 
 #include "lib/Lib.hpp"
 
@@ -53,6 +53,6 @@ struct DataUpdate {
 }} // Firestarter::Systems
 
 
-#endif // __MANAGERS_DATAUPDATE_HPP_
+#endif // __SYSTEMS_DATAUPDATE_HPP_
 
 

@@ -24,14 +24,14 @@
 
 namespace Firestarter { namespace Scene {
 
-Area::Area(int size) : area_size(size), objects_head(nullptr), objects_tail(nullptr), objects_count(0), parent(nullptr), children(nullptr) {
+Area::Area(int size) : area_size(size), objects_head(nullptr), objects_tail(nullptr), objects_count(0), parent(nullptr), children(nullptr), p_depth(0) {
     area_x = -area_size / 2;
     area_y = -area_size / 2;
     area_z = -area_size / 2;
 }
 
 
-Area::Area() : objects_head(nullptr), objects_tail(nullptr), objects_count(0), parent(nullptr), children(nullptr) {}
+Area::Area() : objects_head(nullptr), objects_tail(nullptr), objects_count(0), parent(nullptr), children(nullptr), p_depth(0) {}
 
 
 Area::~Area() {
@@ -59,6 +59,7 @@ void Area::split() {
     for (int i = 0; i < 8; ++i) {
         this->children[i] = new Area();
         this->children[i]->parent = this;
+        this->children[i]->p_depth = this->p_depth + 1;
 
         this->children[i]->area_size = this->area_size / 2;
         this->children[i]->area_x = this->area_x;
@@ -128,17 +129,19 @@ void Area::addObject(Object *obj) {
         return;
     }
 
-    if (objects_tail != nullptr)
+    if (objects_tail != nullptr) {
         objects_tail->setNext(obj);
-    else
+    } else {
         objects_head = obj;
+    }
     objects_tail = obj;
 
     obj->p_area = this;
     obj->setNext(nullptr);
 
-    if (++objects_count > P_SPLIT_AT)
+    if (++objects_count > P_SPLIT_AT && p_depth < P_MAX_DEPTH) {
         split();
+    }
 }
 
 
@@ -160,16 +163,18 @@ void Area::removeObject(Object *obj) {
         }
     }
 
-    if (obj == objects_tail)
+    if (obj == objects_tail) {
         objects_tail = tmp_obj;
-    else if (tmp_obj != nullptr)
+    } else if (tmp_obj != nullptr) {
         tmp_obj->setNext(obj->next());
+    }
 
     obj->p_area = nullptr;
     obj->setNext(nullptr);
 
-    if (--objects_count <= P_MERGE_AT)
+    if (--objects_count <= P_MERGE_AT) {
         merge();
+    }
 }
 
 

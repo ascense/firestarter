@@ -1,7 +1,7 @@
 
 #include <unittest++/UnitTest++.h>
 
-#include "../lib/Lib.hpp"
+#include "lib/Lib.hpp"
 
 
 SUITE(GeomFunc) {

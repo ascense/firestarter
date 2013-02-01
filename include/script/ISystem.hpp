@@ -17,27 +17,32 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "renderer/ISystem.hpp"
+#ifndef __SCRIPT_ISYSTEM_HPP_
+#define __SCRIPT_ISYSTEM_HPP_
 
-#include "renderer/System.hpp"
-
-
-namespace Firestarter { namespace Renderer {
-
-ISystem::ISystem(System *sys) :
-        Systems::AbstractISystem(sys) {}
+#include "systems/AbstractISystem.hpp"
+#include "systems/DataUpdate.hpp"
 
 
-ISystem::~ISystem() {}
+namespace Firestarter { namespace Script {
 
+class System;
 
-void ISystem::tick(double delta, const Scene::Scene* scene) {
-    this->getSystem()->tick(delta, scene);
-}
+/* External Interface for scripting subsystem */
 
+class ISystem : public Systems::AbstractISystem {
+public:
+    ISystem(System *sys);
+    ~ISystem();
 
-void ISystem::notify(Systems::DataUpdate* upd) {
-    this->getSystem()->notify(upd);
-}
+    //  Process one tick (delta seconds) of the game world
+    void tick(double delta, const Scene::Scene* scene);
+    //  Recieve notification of data changes relevant to this subsystem
+    void notify(Systems::DataUpdate* upd);
 
-}} // Firestarter::Renderer
+    const std::string* getSystemName();
+};
+
+}} // Firestarter::Script
+
+#endif // __SCRIPT_ISYSTEM_HPP_

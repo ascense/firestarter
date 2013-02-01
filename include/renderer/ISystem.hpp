@@ -21,12 +21,12 @@
 #define __RENDERER_ISYSTEM_HPP_
 
 #include "systems/AbstractISystem.hpp"
+#include "systems/DataUpdate.hpp"
 
 
 namespace Firestarter { namespace Renderer {
 
 class System;
-
 
 /* External Interface for rendering subsystem */
 
@@ -34,6 +34,13 @@ class ISystem : public Systems::AbstractISystem {
 public:
     ISystem(System *sys);
     ~ISystem();
+
+    //  Process one tick (delta seconds) of the game world
+    void tick(double delta, const Scene::Scene* scene);
+    //  Recieve notification of data changes relevant to this subsystem
+    void notify(Systems::DataUpdate* upd);
+
+    const std::string* getSystemName();
 };
 
 }} // Firestarter::Renderer

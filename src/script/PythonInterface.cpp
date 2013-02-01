@@ -17,27 +17,9 @@
 * along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "renderer/ISystem.hpp"
-
-#include "renderer/System.hpp"
+#include "script/PythonInterface.hpp"
 
 
-namespace Firestarter { namespace Renderer {
+namespace Firestarter { namespace Script {
 
-ISystem::ISystem(System *sys) :
-        Systems::AbstractISystem(sys) {}
-
-
-ISystem::~ISystem() {}
-
-
-void ISystem::tick(double delta, const Scene::Scene* scene) {
-    this->getSystem()->tick(delta, scene);
-}
-
-
-void ISystem::notify(Systems::DataUpdate* upd) {
-    this->getSystem()->notify(upd);
-}
-
-}} // Firestarter::Renderer
+}} // Firestarter::Script

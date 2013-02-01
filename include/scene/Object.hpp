@@ -20,6 +20,8 @@
 #ifndef __SCENE_OBJECT_HPP_
 #define __SCENE_OBJECT_HPP_
 
+#include <vector>
+
 #include "lib/Lib.hpp"
 
 
@@ -37,7 +39,6 @@ friend Scene;
 friend Area;
 
 public:
-    // Note: Objects are added to scene during initialization
     Object(Scene *parent);
     Object(Scene *parent, float x, float y, float z);
     ~Object();
@@ -45,11 +46,16 @@ public:
     Object* next();
     void setNext(Object *obj);
 
+    void attachSystem(uint32_t sysid, uint32_t objid);
+
     const Lib::Vec3D* getPosition() const;
 
 private:
     Scene *p_parent;
     Area *p_area;
+
+    // systems table, containing uint32_t[2] with systemid, system-specific objectid
+    std::vector<uint32_t*> p_systems;
 
     int p_id;
     Lib::Vec3D p_pos;

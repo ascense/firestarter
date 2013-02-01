@@ -1,26 +1,26 @@
 Firestarter Engine
 
+The engine design borrows heavily from the Intel article, "Designing the Framework of a Parallel Game Enigne"
+
 For now, the engine doesn't do much...
+
 
 Required libraries for compiling:
  - libgl
  - libglew
  - libsdl
- 
-Until c++11 thread support is easily available for MinGW, boost libraries are used instead:
  - boost-thread
  - boost-chrono
  - boost-system
+ - boost-python
+ 
+Additionally, UnitTest++ is needed for the testcases
 
- Additionally, UnitTest++ is needed for the testcases
 
-
-To build the project on Ubuntu, you will need Code::Blocks and the required libraries:
+To build the project on Ubuntu 12.10 (Quantal), you will need Code::Blocks and the required libraries:
 apt-get install codeblocks # CodeBlocks uses it's own build system instead of make
 apt-get install libglew1.6-dev libsdl1.2-dev # Required for compiling the engine
+apt-get install libboost-thread1.50-dev libboost-system1.50-dev libboost-chrono1.50-dev libboost-python1.50-dev
 apt-get install libunittest++-dev # Optional, required for compiling the test cases
-apt-get install libboost-thread1.48-dev libboost-system1.48-dev libboost-chrono1.48-dev
 
-
- The engine design borrows heavily from the Intel article, "Designing the Framework of a Parallel Game Enigne"
-
+To build the project on Windows, you will need Code::Blocks, and a MinGW build environment with the required libraries.

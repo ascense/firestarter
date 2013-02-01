@@ -23,6 +23,7 @@
 #include <string>
 
 #include "AbstractSystem.hpp"
+#include "DataUpdate.hpp"
 
 
 namespace Firestarter { namespace Systems {
@@ -36,11 +37,20 @@ class AbstractSystem;
 class AbstractISystem {
 public:
     AbstractISystem(AbstractSystem *sys);
+    virtual ~AbstractISystem();
+
+    //  Process one tick (delta seconds) of the game world
+    virtual void tick(double delta, const Scene::Scene* scene) = 0;
+    //  Recieve notification of data changes relevant to this subsystem
+    virtual void notify(DataUpdate* upd) = 0;
 
     const std::string* getSystemName();
 
 protected:
-    const AbstractSystem *p_system;
+    AbstractSystem *getSystem();
+
+private:
+    AbstractSystem *const p_system;
 };
 
 }} // Firestarter::Core

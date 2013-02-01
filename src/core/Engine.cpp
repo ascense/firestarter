@@ -109,32 +109,32 @@ void Engine::distribute() {}
 
 /** Static Accessors: **/
 
-Managers::EnvironmentMgr* Engine::getEnvironmentMgr() {
+Managers::EnvironmentMgr *const Engine::getEnvironmentMgr() {
     return &(Engine::p_instance->mgr_env);
 }
 
 
-Managers::InputMgr* Engine::getInputMgr() {
+Managers::InputMgr *const Engine::getInputMgr() {
     return &(Engine::p_instance->mgr_input);
 }
 
 
-Managers::PlatformMgr* Engine::getPlatformMgr() {
+Managers::PlatformMgr *const Engine::getPlatformMgr() {
     return &(Engine::p_instance->mgr_pf);
 }
 
 
-Managers::ServiceMgr* Engine::getServiceMgr() {
+Managers::ServiceMgr *const Engine::getServiceMgr() {
     return &(Engine::p_instance->mgr_srv);
 }
 
 
-Managers::StateMgr* Engine::getStateMgr() {
+Managers::StateMgr *const Engine::getStateMgr() {
     return &(Engine::p_instance->mgr_state);
 }
 
 
-Managers::TaskMgr* Engine::getTaskMgr() {
+Managers::TaskMgr *const Engine::getTaskMgr() {
     return &(Engine::p_instance->mgr_task);
 }
 

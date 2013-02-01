@@ -41,6 +41,9 @@ Object::Object(Scene *parent, float x, float y, float z) :
 Object::~Object() {
     if (p_area != nullptr)
         p_area->removeObject(this);
+
+    for (auto it : p_systems)
+        delete [] it;
 }
 
 
@@ -51,6 +54,20 @@ Object* Object::next() {
 
 void Object::setNext(Object *obj) {
     p_next_obj = obj;
+}
+
+
+void Object::attachSystem(uint32_t sysid, uint32_t objid) {
+    for (auto it : p_systems) {
+        if (it[0] == sysid)
+            return;
+    }
+
+    uint32_t *idpair = new uint32_t[2];
+    idpair[0] = sysid;
+    idpair[1] = objid;
+
+    p_systems.push_back(idpair);
 }
 
 
